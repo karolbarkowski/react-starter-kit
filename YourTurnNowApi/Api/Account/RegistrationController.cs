@@ -1,27 +1,19 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using YourTurnNowApi.Api.Model;
+using YourTurnNowApi.Api.Account.Model;
 
-namespace YourTurnNowApi.Api
+namespace YourTurnNowApi.Api.Account
 {
-    [Route("api/[controller]")]
+    [Route("api/account/registration")]
     [ApiController]
-    public class Account : ControllerBase
+    public class RegistrationController : ControllerBase
     {
         public UserManager<IdentityUser> UserManager { get; }
 
-        public Account(UserManager<IdentityUser> userManager)
+        public RegistrationController(UserManager<IdentityUser> userManager)
         {
             UserManager = userManager;
-        }
-
-
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new List<string>() { "OK", "OK 2" };
         }
 
         [HttpPost]

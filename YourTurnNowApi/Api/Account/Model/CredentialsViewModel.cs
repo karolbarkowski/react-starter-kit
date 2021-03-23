@@ -1,6 +1,6 @@
-﻿namespace YourTurnNowApi.Api.Model
+﻿namespace YourTurnNowApi.Api.Account.Model
 {
-    public class RegistrationViewModel
+    public class CredentialsViewModel
     {
         public string Email { get; set; }
 
