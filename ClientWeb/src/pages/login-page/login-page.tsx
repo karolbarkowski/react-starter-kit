@@ -1,8 +1,8 @@
 import "./login-page.css";
-import { useState } from "@hookstate/core";
-import { DevTools } from "@hookstate/core";
+import { useState, DevTools } from "@hookstate/core";
 import { Input, Row, Col, Button, Form, Checkbox } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import { post, urls } from "../../services/api";
 
 export const LoginPage = () => {
   const state = useState({
@@ -13,6 +13,24 @@ export const LoginPage = () => {
   const onFinish = (values: any) => {
     state.isBusy.set(true);
     console.log("Received values of form: ", values);
+
+    post(
+      urls.ACCOUNT.LOGIN,
+      {
+        email: "test001@example.com",
+        password: "Mkb1983!!",
+      },
+      () => {
+        console.log("SUCCESS");
+      },
+      () => {
+        console.log("ERROR");
+      },
+      () => {
+        console.log("FINALLY");
+        state.isBusy.set(false);
+      }
+    );
   };
 
   return (

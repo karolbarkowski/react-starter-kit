@@ -31,6 +31,14 @@ namespace YourTurnNowApi
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowOrigin", builder => builder
+                .AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader());
+            });
+
             //controllers
             services.AddControllers();
 
@@ -105,6 +113,7 @@ namespace YourTurnNowApi
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "YourTurnNowApi v1"));
             }
 
+            app.UseCors("AllowOrigin");
             app.UseHttpsRedirection();
 
             app.UseRouting();
