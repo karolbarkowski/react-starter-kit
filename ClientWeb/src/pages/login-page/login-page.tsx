@@ -1,61 +1,65 @@
 import "./login-page.css";
 import { useState } from "@hookstate/core";
-import { Form, Input, Button, Checkbox } from "antd";
+import { DevTools } from "@hookstate/core";
+import { Input, Row, Col, Button, Form, Checkbox } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 
 export const LoginPage = () => {
   const state = useState({
-    login: "",
-    password: "",
     isBusy: false,
   });
+  DevTools(state).label("login-page-state");
 
   const onFinish = (values: any) => {
+    state.isBusy.set(true);
     console.log("Received values of form: ", values);
   };
 
   return (
-    <Form
-      name="normal_login"
-      className="login-form"
-      initialValues={{ remember: true }}
-      onFinish={onFinish}
-    >
-      <Form.Item
-        name="username"
-        rules={[{ required: true, message: "Please input your Username!" }]}
-      >
-        <Input
-          prefix={<UserOutlined className="site-form-item-icon" />}
-          placeholder="Username"
-        />
-      </Form.Item>
-      <Form.Item
-        name="password"
-        rules={[{ required: true, message: "Please input your Password!" }]}
-      >
-        <Input
-          prefix={<LockOutlined className="site-form-item-icon" />}
-          type="password"
-          placeholder="Password"
-        />
-      </Form.Item>
-      <Form.Item>
-        <Form.Item name="remember" valuePropName="checked" noStyle>
-          <Checkbox>Remember me</Checkbox>
-        </Form.Item>
+    <div>
+      <Row>
+        <Col span={24}>
+          <Form
+            name="login_form"
+            initialValues={{ remember: true }}
+            onFinish={onFinish}
+          >
+            <Form.Item
+              name="username"
+              rules={[
+                { required: true, message: "Please input your Username" },
+              ]}
+            >
+              <Input prefix={<UserOutlined />} placeholder="Username" />
+            </Form.Item>
+            <Form.Item
+              name="password"
+              rules={[
+                { required: true, message: "Please input your Password" },
+              ]}
+            >
+              <Input
+                prefix={<LockOutlined />}
+                type="password"
+                placeholder="Password"
+              />
+            </Form.Item>
+            <Form.Item name="remember" valuePropName="checked">
+              <Checkbox>Remember me</Checkbox>
+            </Form.Item>
 
-        <a className="login-form-forgot" href="google.pl">
-          Forgot password
-        </a>
-      </Form.Item>
-
-      <Form.Item>
-        <Button type="primary" htmlType="submit" className="login-form-button">
-          Log in
-        </Button>
-        Or <a href="google.pl">register now!</a>
-      </Form.Item>
-    </Form>
+            <Form.Item>
+              <Button
+                type="primary"
+                htmlType="submit"
+                loading={state.isBusy.get()}
+              >
+                Log in
+              </Button>
+            </Form.Item>
+          </Form>
+        </Col>
+      </Row>
+    </div>
   );
 };

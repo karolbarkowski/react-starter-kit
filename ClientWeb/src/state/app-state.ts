@@ -1,6 +1,7 @@
 import { createState } from '@hookstate/core';
+import { DevTools } from '@hookstate/core'
 
-export default createState({
+const appState = createState({
     user: {
         login: 'LoginString',
         email: 'admin@example.com'
@@ -17,3 +18,6 @@ export default createState({
         ]
     }
 });
+DevTools(appState).label('global-app-state');
+
+export default appState;
