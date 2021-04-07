@@ -2,27 +2,43 @@ import './index.css'
 import '@hookstate/devtools'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { LoginPage, RegisterPage } from './pages/'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { HomePage, LoginPage, RegisterPage } from './pages'
+import { MainNav, MainFooter } from './components'
 
 ReactDOM.render(
   <React.StrictMode>
-    <div className="container">
-      <div className="row">
-        <div className="one-half column">
-          <LoginPage />
+    <Router>
+      <div className="container">
+        <div className="row">
+          <div className="twelve columns">
+            <MainNav />
+          </div>
         </div>
-        <div className="one-half column">
-          <RegisterPage />
+
+        <div className="row">
+          <div className="twelve columns">
+            <Switch>
+              <Route path="/login">
+                <LoginPage />
+              </Route>
+              <Route path="/register">
+                <RegisterPage />
+              </Route>
+              <Route path="/">
+                <HomePage />
+              </Route>
+            </Switch>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="twelve columns">
+            <MainFooter />
+          </div>
         </div>
       </div>
-      <div className="row">
-        <div className="twelve columns">
-          <small>
-            You are running this application in <b>{process.env.NODE_ENV}</b> mode.
-          </small>
-        </div>
-      </div>
-    </div>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 )
