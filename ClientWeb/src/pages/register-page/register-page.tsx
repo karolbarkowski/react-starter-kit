@@ -2,7 +2,7 @@ import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import { AppTextInput, AppCheckbox } from './../../components/index'
 
-const RegisterPage = () => {
+export const RegisterPage = () => {
   return (
     <>
       <Formik
@@ -49,5 +49,3 @@ const RegisterPage = () => {
     </>
   )
 }
-
-export default RegisterPage
