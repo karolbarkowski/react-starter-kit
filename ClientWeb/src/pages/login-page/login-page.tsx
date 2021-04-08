@@ -1,4 +1,4 @@
-import './login-page.css'
+import './login-page.scss'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import { AppTextInput } from './../../components/index'
