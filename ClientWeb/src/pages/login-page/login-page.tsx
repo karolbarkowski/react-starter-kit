@@ -22,6 +22,15 @@ export const LoginPage = () => {
     )
   }
 
+  const onFacebookLogin = (e: React.MouseEvent<HTMLElement>) => {
+    FB.login(
+      function (response) {
+        console.log(response)
+      },
+      { scope: 'public_profile,email' }
+    )
+  }
+
   return (
     <>
       <Formik
@@ -42,6 +51,8 @@ export const LoginPage = () => {
             <AppTextInput label="Password" name="password" type="password" />
 
             <input type="submit" className="button-primary" disabled={isSubmitting} value="Submit" />
+            <br />
+            <input onClick={onFacebookLogin} type="button" className="button-primary" value="Login With Facebook" />
           </Form>
         )}
       </Formik>
