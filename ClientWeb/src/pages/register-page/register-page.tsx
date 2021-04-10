@@ -1,8 +1,27 @@
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-import { AppTextInput, AppCheckbox } from './../../components/index'
+import { post, urls } from '../../services/api'
+import { NotificationTypes, notify } from '../../services/notification'
+import { AppTextInput } from './../../components/index'
 
 export const RegisterPage = () => {
+  const onSubmit = (values: any, { setSubmitting }: any) => {
+    setSubmitting(true)
+    post(
+      urls.ACCOUNT.REGISTER,
+      values,
+      () => {
+        notify('Registration Succesfull', '', NotificationTypes.Success)
+      },
+      () => {
+        notify('Registration Error', '', NotificationTypes.Error)
+      },
+      () => {
+        setSubmitting(false)
+      }
+    )
+  }
+
   return (
     <>
       <Formik
@@ -10,11 +29,6 @@ export const RegisterPage = () => {
           email: '',
           password: '',
           passwordConfirm: '',
-          firstName: '',
-          lastName: '',
-          mobileNumber: '',
-          agreeSavingData: false,
-          agreeUpdates: false,
         }}
         validationSchema={Yup.object({
           email: Yup.string().email('Must be a valid email').required('This field is required'),
@@ -22,25 +36,13 @@ export const RegisterPage = () => {
           passwordConfirm: Yup.string()
             .oneOf([Yup.ref('password')], 'Passwords do not match')
             .required('This field is required'),
-          mobileNumber: Yup.string().required('This field is required'),
-          agreeSavingData: Yup.bool().oneOf([true], 'Field must be checked'),
         })}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2))
-            setSubmitting(false)
-          }, 1400)
-        }}>
+        onSubmit={onSubmit}>
         {({ isSubmitting }) => (
           <Form>
             <AppTextInput label="E-mail" name="email" />
             <AppTextInput label="Passord" name="password" type="password" />
             <AppTextInput label="Repeat Passord" name="passwordConfirm" type="password" />
-            <AppTextInput label="First Name" name="firstName" />
-            <AppTextInput label="Last Name" name="lastName" />
-            <AppTextInput label="Mobile Number" name="mobileNumber" />
-            <AppCheckbox label="* I agree to something mandatory" name="agreeSavingData" />
-            <AppCheckbox label="I agree to something optional" name="agreeUpdates" />
 
             <input type="submit" className="button-primary" disabled={isSubmitting} value="Submit" />
           </Form>

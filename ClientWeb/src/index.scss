@@ -1,7 +1,10 @@
 @import '~skeleton-css/css/skeleton.css';
 
-body {
+* {
   margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+}
+
+body {
+  background-color: rgb(206, 206, 206);
 }

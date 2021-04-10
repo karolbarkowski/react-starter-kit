@@ -19,14 +19,14 @@ namespace YourTurnNowApi.Api.Account
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] RegistrationViewModel model)
         {
-            var result = await UserManager.CreateAsync(new IdentityUser
-            {
-                Email = model.Email,
-                UserName = model.Email
-            }, model.Password);
+            //var result = await UserManager.CreateAsync(new IdentityUser
+            //{
+            //    Email = model.Email,
+            //    UserName = model.Email
+            //}, model.Password);
 
-            if (!result.Succeeded)
-                return new BadRequestResult();
+            //if (!result.Succeeded)
+            //    return new BadRequestResult();
 
             return new OkResult();
         }
