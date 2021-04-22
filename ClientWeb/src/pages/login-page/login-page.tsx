@@ -7,8 +7,6 @@ import { notify, NotificationTypes } from '../../services/notification'
 
 export const LoginPage = () => {
   const onFinish = (values: any) => {
-    console.log('Received values of form: ', values)
-
     post(
       urls.ACCOUNT.LOGIN,
       values,
@@ -42,9 +40,7 @@ export const LoginPage = () => {
           email: Yup.string().required('This field is required'),
           password: Yup.string().required('This field is required'),
         })}
-        onSubmit={(values, { setSubmitting }) => {
-          onFinish(values)
-        }}>
+        onSubmit={onFinish}>
         {({ isSubmitting }) => (
           <Form>
             <AppTextInput label="Email" name="email" />

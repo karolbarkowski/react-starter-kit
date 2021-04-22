@@ -1,6 +1,6 @@
 import { useField } from 'formik'
 
-type CheckboxProps = {
+export type CheckboxProps = {
   label: string
   name: string
 }
