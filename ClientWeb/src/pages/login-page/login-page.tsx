@@ -4,10 +4,13 @@ import { Form, AppTextInput } from '../../components/atoms/index'
 const validationSchema = {
   password: {
     required: 'Password is required',
-    minLength: {
-      value: 2,
-      message: 'Password is too short',
+    maxLength: {
+      value: 8,
+      message: 'Password is too long',
     },
+  },
+  passwordRepeat: {
+    required: 'Password is required',
     maxLength: {
       value: 8,
       message: 'Password is too long',
@@ -16,7 +19,8 @@ const validationSchema = {
 }
 
 const defaultValues = {
-  password: '123',
+  password: '',
+  passwordRepeat: '',
 }
 
 export const LoginPage = () => {
@@ -24,10 +28,11 @@ export const LoginPage = () => {
 
   return (
     <>
-      <h1> LOGIN PAGE</h1>
+      <h1>LOGIN PAGE</h1>
 
-      <Form onSubmit={onSubmit} defaultValues={defaultValues}>
-        <AppTextInput label="Password" name="password" rules={validationSchema.password} />
+      <Form onSubmit={onSubmit} defaultValues={defaultValues} validationSchema={validationSchema}>
+        <AppTextInput label="Password" name="password" />
+        <AppTextInput label="Repat Password" name="passwordRepeat" />
       </Form>
     </>
   )

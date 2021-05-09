@@ -3,13 +3,14 @@ import { useForm, SubmitHandler, FieldValues } from 'react-hook-form'
 
 interface FormProps {
   defaultValues?: FieldValues
+  validationSchema?: FieldValues
   onSubmit: SubmitHandler<FieldValues>
   isSubmitting?: boolean
   children: JSX.Element | JSX.Element[]
 }
 
 export const Form = (props: FormProps) => {
-  const { defaultValues, children, onSubmit, isSubmitting } = props
+  const { defaultValues, validationSchema, children, onSubmit, isSubmitting } = props
 
   const {
     handleSubmit,
@@ -28,6 +29,7 @@ export const Form = (props: FormProps) => {
             ...child.props,
             register,
             errors,
+            rules: validationSchema && validationSchema[child.props.name],
           },
         })
       })}
