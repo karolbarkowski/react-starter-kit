@@ -4,7 +4,7 @@ import '@hookstate/devtools'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { HomePage, LoginPage, RegisterPage } from './pages'
+import { HomePage, LoginPage } from './pages'
 import { MainNav, MainFooter } from './components'
 
 ReactDOM.render(
@@ -23,9 +23,9 @@ ReactDOM.render(
               <Route path="/login">
                 <LoginPage />
               </Route>
-              <Route path="/register">
+              {/* <Route path="/register">
                 <RegisterPage />
-              </Route>
+              </Route> */}
               <Route path="/">
                 <HomePage />
               </Route>

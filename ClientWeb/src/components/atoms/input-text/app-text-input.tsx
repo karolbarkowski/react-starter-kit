@@ -1,23 +1,26 @@
-import { Field, useField } from 'formik'
-import React from 'react'
+import { RegisterOptions, UseFormRegister, FieldErrors } from 'react-hook-form'
 
-export type InputProps = {
+export type InputProps<TFieldValues> = {
   label: string
   name: string
-  type?: string
+  type?: 'text' | 'password' | 'email' | 'number'
   disabled?: boolean
+  register: UseFormRegister<TFieldValues>
+  errors: FieldErrors<TFieldValues>
+  rules?: RegisterOptions<TFieldValues>
 }
 
-export const AppTextInput = (props: InputProps) => {
-  const [field, meta] = useField(props)
-
+export function AppTextInput(props: any) {
   return (
     <>
       <label htmlFor={props.name}>{props.label}</label>
-      {/* <input type="text" className="u-full-width" {...field} disabled={props.disabled ? props.disabled : false}></input> */}
-      <Field id="firstName" placeholder="Jane" {...field} />
+      <input type={props.type || 'text'} {...props.register(props.name, props.rules)} id={props.name} name={props.name} disabled={props.disabled || false} />
 
-      {meta.touched && meta.error ? <div className="form-error-message">{meta.error}</div> : null}
+      {props.errors[props.name] && (
+        <p className="help is-danger" role="alert">
+          {props.errors[props.name].message}
+        </p>
+      )}
     </>
   )
 }

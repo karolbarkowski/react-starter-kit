@@ -1,57 +1,34 @@
 import './login-page.scss'
-import { Formik, Form } from 'formik'
-import * as Yup from 'yup'
-import { AppTextInput } from './../../components/index'
-import { post, urls } from '../../services/api'
-import { notify, NotificationTypes } from '../../services/notification'
+import { Form, AppTextInput } from '../../components/atoms/index'
+
+const validationSchema = {
+  password: {
+    required: 'Password is required',
+    minLength: {
+      value: 2,
+      message: 'Password is too short',
+    },
+    maxLength: {
+      value: 8,
+      message: 'Password is too long',
+    },
+  },
+}
+
+const defaultValues = {
+  password: '123',
+}
 
 export const LoginPage = () => {
-  const onFinish = (values: any) => {
-    post(
-      urls.ACCOUNT.LOGIN,
-      values,
-      () => {
-        notify('Login Succesfull', 'You are now logged in', NotificationTypes.Success)
-      },
-      () => {
-        notify('Login Error', 'Unable to log in', NotificationTypes.Error)
-      },
-      () => {}
-    )
-  }
-
-  const onFacebookLogin = (e: React.MouseEvent<HTMLElement>) => {
-    FB.login(
-      function (response) {
-        console.log(response)
-      },
-      { scope: 'public_profile,email' }
-    )
-  }
+  const onSubmit = (data: any) => console.log(data)
 
   return (
     <>
-      <Formik
-        initialValues={{
-          email: '',
-          password: '',
-        }}
-        validationSchema={Yup.object({
-          email: Yup.string().required('This field is required'),
-          password: Yup.string().required('This field is required'),
-        })}
-        onSubmit={onFinish}>
-        {({ isSubmitting }) => (
-          <Form>
-            <AppTextInput label="Email" name="email" />
-            <AppTextInput label="Password" name="password" type="password" />
+      <h1> LOGIN PAGE</h1>
 
-            <input type="submit" className="button-primary" disabled={isSubmitting} value="Submit" />
-            <br />
-            <input onClick={onFacebookLogin} type="button" className="button-primary" value="Login With Facebook" />
-          </Form>
-        )}
-      </Formik>
+      <Form onSubmit={onSubmit} defaultValues={defaultValues}>
+        <AppTextInput label="Password" name="password" rules={validationSchema.password} />
+      </Form>
     </>
   )
 }
