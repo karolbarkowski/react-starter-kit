@@ -1,44 +1,35 @@
-import './login-page.scss'
-import { Form, AppTextInput, Header } from '../../components/atoms/index'
-
-const validationSchema = {
-  password: {
-    required: 'Password is required',
-    maxLength: {
-      value: 8,
-      message: 'Password is too long',
-    },
-  },
-  passwordRepeat: {
-    validate: {
-      matchesPreviousPassword: (value: any) => {
-        return 'Passwords should match!'
-      },
-    },
-  },
-  agree: {
-    required: 'Agreement required',
-  },
-}
-
-const defaultValues = {
-  password: '',
-  passwordRepeat: '',
-  agree: false,
-}
+import React from 'react'
+import { Header } from '../../components/atoms/index'
+import { LoginForm } from '../../components/molecules/index'
+import { post, urls } from '../../services/api'
+import { NotificationTypes, notify } from '../../services/notification'
 
 export const LoginPage = () => {
-  const onSubmit = (data: any) => console.log(data)
+  const [isSubmitting, setIsSubmitting] = React.useState<boolean>(false)
+
+  const onSubmit = (values: any) => {
+    console.log('LOGGIN IN')
+    setIsSubmitting(true)
+    post(
+      urls.ACCOUNT.LOGIN,
+      values,
+      () => {
+        notify('Login Succesfull', 'You are now logged in', NotificationTypes.Success)
+      },
+      () => {
+        notify('Login Error', 'Unable to log in', NotificationTypes.Error)
+      },
+      () => {
+        setIsSubmitting(false)
+      }
+    )
+  }
 
   return (
     <>
       <Header type="medium">Login Page</Header>
 
-      <Form onSubmit={onSubmit} defaultValues={defaultValues} validationSchema={validationSchema}>
-        <AppTextInput label="Password" name="password" />
-        <AppTextInput label="Repat Password" name="passwordRepeat" />
-        <AppTextInput label="Agree to something" name="agree" type="checkbox" />
-      </Form>
+      <LoginForm onSubmit={onSubmit} isSubmitting={isSubmitting}></LoginForm>
     </>
   )
 }

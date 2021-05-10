@@ -1,4 +1,4 @@
-import { FieldValues, RegisterOptions, UseFormRegister } from 'react-hook-form'
+import { FieldValues, UseFormRegister } from 'react-hook-form'
 
 export interface InputProps {
   label: string
@@ -7,11 +7,10 @@ export interface InputProps {
   disabled?: boolean
   error?: string
   register?: UseFormRegister<FieldValues>
-  rules?: RegisterOptions
 }
 
 export function AppTextInput(props: InputProps) {
-  const { register, rules, name, label, type = 'text', error, disabled = false } = props
+  const { register, name, label, type = 'text', error, disabled = false } = props
   const inputProps = { name, type, disabled, className: 'input' }
 
   return (
@@ -20,7 +19,7 @@ export function AppTextInput(props: InputProps) {
         {label}
       </label>
 
-      {register && <input {...register(name, rules)} {...inputProps} />}
+      {register && <input {...register(name)} {...inputProps} />}
       {!register && <input {...inputProps} />}
 
       {error && <p className="error">{error}</p>}

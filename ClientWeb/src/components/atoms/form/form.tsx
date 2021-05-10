@@ -1,17 +1,19 @@
 import React from 'react'
 import { useForm, SubmitHandler, FieldValues } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 import { Button } from '../button/button'
 
 interface FormProps {
+  submitLabel: string
   defaultValues?: FieldValues
-  validationSchema?: FieldValues
+  validationSchema?: any
   onSubmit: SubmitHandler<FieldValues>
   isSubmitting?: boolean
   children: JSX.Element | JSX.Element[]
 }
 
 export const Form = (props: FormProps) => {
-  const { defaultValues, validationSchema, children, onSubmit, isSubmitting } = props
+  const { submitLabel = 'Submit', defaultValues, validationSchema, children, onSubmit, isSubmitting } = props
 
   const {
     handleSubmit,
@@ -20,22 +22,24 @@ export const Form = (props: FormProps) => {
   } = useForm({
     defaultValues,
     mode: 'onBlur',
+    resolver: yupResolver(validationSchema),
   })
 
   return (
-    <form className="form" method="post" onSubmit={handleSubmit(onSubmit)}>
-      {React.Children.map(children, (child) => {
-        return React.createElement(child.type, {
-          ...{
-            ...child.props,
-            register,
-            error: errors[child.props.name]?.message,
-            rules: validationSchema && validationSchema[child.props.name],
-          },
-        })
-      })}
+    <>
+      <form className="form" method="post" onSubmit={handleSubmit(onSubmit)}>
+        {React.Children.map(children, (child) => {
+          return React.createElement(child.type, {
+            ...{
+              ...child.props,
+              register,
+              error: errors[child.props.name]?.message,
+            },
+          })
+        })}
 
-      <Button type="submit" label="Send" className="button-primary"></Button>
-    </form>
+        <Button type="submit" isSubmitting={isSubmitting} label={submitLabel} className="button-primary"></Button>
+      </form>
+    </>
   )
 }
