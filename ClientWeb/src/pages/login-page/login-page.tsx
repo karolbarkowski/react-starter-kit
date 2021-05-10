@@ -1,5 +1,5 @@
 import './login-page.scss'
-import { Form, AppTextInput } from '../../components/atoms/index'
+import { Form, AppTextInput, Header } from '../../components/atoms/index'
 
 const validationSchema = {
   password: {
@@ -10,17 +10,21 @@ const validationSchema = {
     },
   },
   passwordRepeat: {
-    required: 'Password is required',
-    maxLength: {
-      value: 8,
-      message: 'Password is too long',
+    validate: {
+      matchesPreviousPassword: (value: any) => {
+        return 'Passwords should match!'
+      },
     },
+  },
+  agree: {
+    required: 'Agreement required',
   },
 }
 
 const defaultValues = {
   password: '',
   passwordRepeat: '',
+  agree: false,
 }
 
 export const LoginPage = () => {
@@ -28,11 +32,12 @@ export const LoginPage = () => {
 
   return (
     <>
-      <h1>LOGIN PAGE</h1>
+      <Header type="medium">Login Page</Header>
 
       <Form onSubmit={onSubmit} defaultValues={defaultValues} validationSchema={validationSchema}>
         <AppTextInput label="Password" name="password" />
         <AppTextInput label="Repat Password" name="passwordRepeat" />
+        <AppTextInput label="Agree to something" name="agree" type="checkbox" />
       </Form>
     </>
   )

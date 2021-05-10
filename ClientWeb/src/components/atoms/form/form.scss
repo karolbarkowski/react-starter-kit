@@ -1,0 +1,26 @@
+.form {
+  margin-bottom: 2.5rem;
+
+  .form-line {
+    margin-bottom: 1.5rem;
+  }
+
+  .label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  .error {
+    display: block;
+    color: red;
+    padding: 0;
+    margin: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+
+  input[type='submit'] {
+    width: auto;
+  }
+}

@@ -1,26 +1,29 @@
-import { RegisterOptions, UseFormRegister, FieldErrors } from 'react-hook-form'
+import { FieldValues, RegisterOptions, UseFormRegister } from 'react-hook-form'
 
-export interface InputProps<TFieldValues> {
+export interface InputProps {
   label: string
   name: string
-  type?: 'text' | 'password' | 'email' | 'number'
+  type?: 'text' | 'password' | 'email' | 'number' | 'checkbox'
   disabled?: boolean
-  rules?: RegisterOptions<TFieldValues>
-  register: UseFormRegister<TFieldValues>
-  errors: FieldErrors<TFieldValues>
+  error?: string
+  register?: UseFormRegister<FieldValues>
+  rules?: RegisterOptions
 }
 
-export function AppTextInput({ register, errors, ...props }: any) {
-  return (
-    <>
-      <label htmlFor={props.name}>{props.label}</label>
-      <input type={props.type || 'text'} {...register(props.name, props.rules)} id={props.name} name={props.name} disabled={props.disabled || false} />
+export function AppTextInput(props: InputProps) {
+  const { register, rules, name, label, type = 'text', error, disabled = false } = props
+  const inputProps = { name, type, disabled, className: 'input' }
 
-      {errors[props.name] && (
-        <p className="help is-danger" role="alert">
-          {errors[props.name]?.message}
-        </p>
-      )}
-    </>
+  return (
+    <div className="form-line">
+      <label className="label" htmlFor={name}>
+        {label}
+      </label>
+
+      {register && <input {...register(name, rules)} {...inputProps} />}
+      {!register && <input {...inputProps} />}
+
+      {error && <p className="error">{error}</p>}
+    </div>
   )
 }
