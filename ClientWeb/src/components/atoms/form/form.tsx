@@ -1,4 +1,4 @@
-import './form.scss'
+import styles from './form.module.scss'
 import React from 'react'
 import { useForm, SubmitHandler, FieldValues } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -28,7 +28,7 @@ export const Form = (props: FormProps) => {
 
   return (
     <>
-      <form className="form" method="post" onSubmit={handleSubmit(onSubmit)}>
+      <form className={styles.form} method="post" onSubmit={handleSubmit(onSubmit)}>
         {React.Children.map(children, (child) => {
           return React.createElement(child.type, {
             ...{

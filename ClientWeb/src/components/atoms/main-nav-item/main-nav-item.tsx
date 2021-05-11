@@ -1,5 +1,5 @@
+import styles from './main-nav-item.module.scss'
 import { Link } from 'react-router-dom'
-import './main-nav-item.scss'
 
 export interface MainNavItemProps {
   path: string
@@ -8,7 +8,7 @@ export interface MainNavItemProps {
 
 export const MainNavItem = (props: MainNavItemProps) => {
   return (
-    <li className="nav-item">
+    <li className={styles['nav-item']}>
       <Link to={props.path}>{props.children}</Link>
     </li>
   )

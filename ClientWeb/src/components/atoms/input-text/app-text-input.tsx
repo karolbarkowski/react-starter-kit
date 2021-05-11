@@ -1,4 +1,4 @@
-import './app-text-input.scss'
+import styles from './app-text-input.module.scss'
 import { FieldValues, UseFormRegister } from 'react-hook-form'
 
 export interface InputProps {
@@ -15,15 +15,15 @@ export function AppTextInput(props: InputProps) {
   const inputProps = { name, type, disabled, className: 'input' }
 
   return (
-    <div className="form-line">
-      <label className="label" htmlFor={name}>
+    <div className={styles['form-line']}>
+      <label className={styles['label']} htmlFor={name}>
         {label}
       </label>
 
       {register && <input {...register(name)} {...inputProps} />}
       {!register && <input {...inputProps} />}
 
-      {error && <p className="error">{error}</p>}
+      {error && <p className={styles['error']}>{error}</p>}
     </div>
   )
 }

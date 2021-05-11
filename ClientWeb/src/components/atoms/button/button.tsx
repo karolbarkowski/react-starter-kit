@@ -1,4 +1,4 @@
-import './button.scss'
+import styles from './button.module.scss'
 
 export type ButtonProps = {
   label: string
@@ -10,5 +10,6 @@ export type ButtonProps = {
 
 export const Button = (props: ButtonProps) => {
   const { label, isSubmitting = false, className = 'primary', type = 'button', disabled = false } = props
-  return <input className={className} value={label} disabled={disabled || isSubmitting} type={type} />
+
+  return <input className={`${styles.btn} ${styles[className]}`} value={label} disabled={disabled || isSubmitting} type={type} />
 }

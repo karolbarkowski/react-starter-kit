@@ -1,5 +1,9 @@
 import { Header } from '../../components/atoms/atoms-index'
 
 export const HomePage = () => {
-  return <Header>Home Page</Header>
+  return (
+    <Header type="small" color="secondary">
+      Home Page
+    </Header>
+  )
 }

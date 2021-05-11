@@ -1,4 +1,4 @@
-import './header.scss'
+import styles from './header.module.scss'
 
 export interface HeaderProps {
   children: string
@@ -11,11 +11,11 @@ export const Header = (props: HeaderProps) => {
 
   switch (type) {
     case 'big':
-      return <h1 className={color}>{children}</h1>
+      return <h1 className={`${styles.header} ${styles[color]}`}>{children}</h1>
     case 'small':
-      return <h3 className={color}>{children}</h3>
+      return <h3 className={`${styles.header} ${styles[color]}`}>{children}</h3>
     case 'medium':
     default:
-      return <h2 className={color}>{children}</h2>
+      return <h2 className={`${styles.header} ${styles[color]}`}>{children}</h2>
   }
 }

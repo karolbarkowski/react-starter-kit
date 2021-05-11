@@ -1,4 +1,3 @@
-import './button.scss'
 import { Button, ButtonProps } from './button'
 import { Story } from '@storybook/react'
 
