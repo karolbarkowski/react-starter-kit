@@ -1,8 +1,8 @@
-import { RegisterForm } from '../molecules-index'
+import { RegisterForm } from './register-form'
 import { Story } from '@storybook/react'
 
 export default {
-  title: 'Molecules/RegisterForm',
+  title: 'Organisms/Register Form',
   component: RegisterForm,
 }
 

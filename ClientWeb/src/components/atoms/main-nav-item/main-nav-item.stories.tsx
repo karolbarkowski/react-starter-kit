@@ -2,7 +2,7 @@ import { MemoryRouter } from 'react-router-dom'
 import { MainNavItem } from './main-nav-item'
 
 export default {
-  title: 'Atoms/MainNavItem',
+  title: 'Atoms/Main Nav Item',
   component: MainNavItem,
   decorators: [
     (Story: any) => (

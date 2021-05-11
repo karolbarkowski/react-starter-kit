@@ -2,23 +2,30 @@ import { Header, HeaderProps } from './header'
 import { Story } from '@storybook/react'
 
 export default {
-  title: 'Atoms/Header',
+  title: 'Atoms/Headers',
   component: Header,
 }
 
-const Template: Story<HeaderProps> = (args) => <Header {...args}>Header</Header>
-
-export const Big = Template.bind({})
-Big.args = {
-  type: 'big',
+const Template: Story<HeaderProps> = (args) => {
+  return (
+    <>
+      <Header type="big" {...args}>
+        Lorem ipsum dolor sit amet
+      </Header>
+      <Header type="medium" {...args}>
+        Lorem ipsum dolor sit amet
+      </Header>
+      <Header type="small" {...args}>
+        Lorem ipsum dolor sit amet
+      </Header>
+    </>
+  )
 }
 
-export const Medium = Template.bind({})
-Medium.args = {
-  type: 'medium',
-}
+export const Primary = Template.bind({})
+Primary.args = {}
 
-export const Small = Template.bind({})
-Small.args = {
-  type: 'small',
+export const Secondary = Template.bind({})
+Secondary.args = {
+  color: 'secondary',
 }

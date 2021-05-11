@@ -3,7 +3,7 @@ import { MainNavItem } from '../../atoms/atoms-index'
 import { MainNav } from './main-nav'
 
 export default {
-  title: 'Molecules/MainNav',
+  title: 'Molecules/Main Nav',
   component: MainNav,
   decorators: [
     (Story: any) => (

@@ -1,3 +1,4 @@
+import './app-text-input.scss'
 import { FieldValues, UseFormRegister } from 'react-hook-form'
 
 export interface InputProps {

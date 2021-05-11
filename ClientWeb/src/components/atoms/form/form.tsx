@@ -1,3 +1,4 @@
+import './form.scss'
 import React from 'react'
 import { useForm, SubmitHandler, FieldValues } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -38,7 +39,7 @@ export const Form = (props: FormProps) => {
           })
         })}
 
-        <Button type="submit" isSubmitting={isSubmitting} label={submitLabel} className="button-primary"></Button>
+        <Button type="submit" isSubmitting={isSubmitting} label={submitLabel} className="primary"></Button>
       </form>
     </>
   )

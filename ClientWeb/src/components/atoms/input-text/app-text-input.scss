@@ -1,8 +1,11 @@
-input,
+input[type='text'],
+input[type='password'],
+input[type='number'],
+input[type='email'],
 textarea,
 select {
   width: 100%;
-  padding: 12px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
+  padding: 12px 10px;
   background-color: #fff;
   border: 1px solid #d1d1d1;
   border-radius: 4px;

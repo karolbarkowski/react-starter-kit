@@ -1,8 +1,8 @@
-import { LoginForm } from '../molecules-index'
+import { LoginForm } from './login-form'
 import { Story } from '@storybook/react'
 
 export default {
-  title: 'Molecules/LoginForm',
+  title: 'Organisms/Login Form',
   component: LoginForm,
 }
 

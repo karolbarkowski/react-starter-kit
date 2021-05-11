@@ -1,5 +1,4 @@
 import './index.scss'
-import './vendor.scss'
 import '@hookstate/devtools'
 import React from 'react'
 import ReactDOM from 'react-dom'

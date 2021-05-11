@@ -1,4 +1,3 @@
-import '!style-loader!css-loader!sass-loader!./../src/vendor.scss'
 import '!style-loader!css-loader!sass-loader!./../src/index.scss'
 
 export const parameters = {

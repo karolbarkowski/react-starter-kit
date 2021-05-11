@@ -1,3 +1,4 @@
+import './button.scss'
 import { Button, ButtonProps } from './button'
 import { Story } from '@storybook/react'
 
@@ -6,28 +7,22 @@ export default {
   component: Button,
 }
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} />
-
-export const Default = Template.bind({})
-Default.args = {
-  label: 'Button',
+const Template: Story<ButtonProps> = (args) => {
+  return (
+    <>
+      <Button {...args} label="Button" />
+      <br />
+      <Button {...args} label="Button" disabled />
+    </>
+  )
 }
 
 export const Primary = Template.bind({})
 Primary.args = {
-  label: 'Button',
-  className: 'button-primary',
+  className: 'primary',
 }
 
-export const Disabled = Template.bind({})
-Disabled.args = {
-  label: 'Button',
-  disabled: true,
-}
-
-export const DisabledPrimary = Template.bind({})
-DisabledPrimary.args = {
-  label: 'Button',
-  disabled: true,
-  className: 'button-primary',
+export const Secondary = Template.bind({})
+Secondary.args = {
+  className: 'secondary',
 }

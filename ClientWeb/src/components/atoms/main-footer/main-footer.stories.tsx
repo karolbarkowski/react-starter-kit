@@ -1,7 +1,7 @@
 import { MainFooter } from '../main-footer/main-footer'
 
 export default {
-  title: 'Atoms/MainFooter',
+  title: 'Atoms/Main Footer',
   component: MainFooter,
 }
 
