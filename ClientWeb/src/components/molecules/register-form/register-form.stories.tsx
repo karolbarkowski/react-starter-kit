@@ -1,4 +1,4 @@
-import { RegisterForm } from '../index'
+import { RegisterForm } from '../molecules-index'
 import { Story } from '@storybook/react'
 
 export default {

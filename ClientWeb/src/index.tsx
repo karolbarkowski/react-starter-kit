@@ -4,8 +4,10 @@ import '@hookstate/devtools'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { HomePage, LoginPage, RegisterPage } from './pages'
-import { MainNav, MainFooter } from './components'
+import { HomePage, LoginPage, RegisterPage } from './pages/pages-index'
+import { MainNav } from './components/molecules/molecules-index'
+import { MainFooter } from './components/atoms/atoms-index'
+import { MainNavItem } from './components/atoms/atoms-index'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,7 +15,11 @@ ReactDOM.render(
       <div className="container">
         <div className="row">
           <div className="twelve columns">
-            <MainNav />
+            <MainNav>
+              <MainNavItem path="/">Home</MainNavItem>
+              <MainNavItem path="/login">Login</MainNavItem>
+              <MainNavItem path="/register">Register</MainNavItem>
+            </MainNav>
           </div>
         </div>
 

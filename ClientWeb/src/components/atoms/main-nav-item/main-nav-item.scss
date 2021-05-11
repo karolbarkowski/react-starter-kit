@@ -1,0 +1,14 @@
+.nav-item {
+  display: inline-block;
+
+  &:hover {
+    background-color: yellow;
+  }
+
+  a {
+    display: block;
+    color: green;
+    text-decoration: none;
+    padding: 12px 20px;
+  }
+}

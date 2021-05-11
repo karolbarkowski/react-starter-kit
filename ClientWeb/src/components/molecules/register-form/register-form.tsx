@@ -1,4 +1,4 @@
-import { Form, AppTextInput } from '../../atoms/index'
+import { Form, AppTextInput } from '../../atoms/atoms-index'
 import * as Yup from 'yup'
 
 const validationSchema = Yup.object().shape({

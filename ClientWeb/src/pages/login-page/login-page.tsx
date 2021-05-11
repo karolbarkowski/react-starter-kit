@@ -1,6 +1,6 @@
 import React from 'react'
-import { Header } from '../../components/atoms/index'
-import { LoginForm } from '../../components/molecules/index'
+import { Header } from '../../components/atoms/atoms-index'
+import { LoginForm } from '../../components/molecules/molecules-index'
 import { post, urls } from '../../services/api'
 import { NotificationTypes, notify } from '../../services/notification'
 

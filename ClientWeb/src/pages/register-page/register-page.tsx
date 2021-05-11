@@ -1,6 +1,6 @@
 import React from 'react'
-import { Header } from '../../components/atoms'
-import { RegisterForm } from '../../components/molecules'
+import { Header } from '../../components/atoms/atoms-index'
+import { RegisterForm } from '../../components/molecules/molecules-index'
 import { post, urls } from '../../services/api'
 import { NotificationTypes, notify } from '../../services/notification'
 
@@ -26,7 +26,7 @@ export const RegisterPage = () => {
 
   return (
     <>
-      <Header type="medium">Login Page</Header>
+      <Header type="medium">Register Page</Header>
 
       <RegisterForm onSubmit={onSubmit} isSubmitting={isSubmitting}></RegisterForm>
     </>
