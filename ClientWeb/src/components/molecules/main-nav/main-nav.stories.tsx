@@ -1,9 +1,17 @@
+import { MemoryRouter } from 'react-router-dom'
 import { MainNavItem } from '../../atoms/atoms-index'
 import { MainNav } from './main-nav'
 
 export default {
   title: 'Molecules/MainNav',
   component: MainNav,
+  decorators: [
+    (Story: any) => (
+      <MemoryRouter>
+        <Story />
+      </MemoryRouter>
+    ),
+  ],
 }
 
 export const NavItem = () => {
