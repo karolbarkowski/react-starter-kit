@@ -8,6 +8,6 @@ body {
   line-height: 1.6;
   font-weight: 400;
   font-family: 'Raleway', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background-color: #fff;
-  color: #2c2543;
+  background-color: var(--bg-main);
+  color: var(--primary);
 }

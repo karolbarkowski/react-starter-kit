@@ -1,4 +1,5 @@
 import './index.scss'
+import './_theme.scss'
 import '@hookstate/devtools'
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -9,42 +10,44 @@ import { MainFooter } from './components/atoms/atoms-index'
 import { MainNavItem } from './components/atoms/atoms-index'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <div className="container">
-        <div className="row">
-          <div className="twelve columns">
-            <MainNav>
-              <MainNavItem path="/">Home</MainNavItem>
-              <MainNavItem path="/login">Login</MainNavItem>
-              <MainNavItem path="/register">Register</MainNavItem>
-            </MainNav>
+  <div className="light">
+    <React.StrictMode>
+      <Router>
+        <div className="container">
+          <div className="row">
+            <div className="twelve columns">
+              <MainNav>
+                <MainNavItem path="/">Home</MainNavItem>
+                <MainNavItem path="/login">Login</MainNavItem>
+                <MainNavItem path="/register">Register</MainNavItem>
+              </MainNav>
+            </div>
           </div>
-        </div>
 
-        <div className="row">
-          <div className="twelve columns">
-            <Switch>
-              <Route path="/login">
-                <LoginPage />
-              </Route>
-              <Route path="/register">
-                <RegisterPage />
-              </Route>
-              <Route path="/">
-                <HomePage />
-              </Route>
-            </Switch>
+          <div className="row">
+            <div className="twelve columns">
+              <Switch>
+                <Route path="/login">
+                  <LoginPage />
+                </Route>
+                <Route path="/register">
+                  <RegisterPage />
+                </Route>
+                <Route path="/">
+                  <HomePage />
+                </Route>
+              </Switch>
+            </div>
           </div>
-        </div>
 
-        <div className="row">
-          <div className="twelve columns">
-            <MainFooter />
+          <div className="row">
+            <div className="twelve columns">
+              <MainFooter />
+            </div>
           </div>
         </div>
-      </div>
-    </Router>
-  </React.StrictMode>,
+      </Router>
+    </React.StrictMode>
+  </div>,
   document.getElementById('root')
 )

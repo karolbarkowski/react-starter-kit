@@ -1,0 +1,29 @@
+.light {
+  --primary: #2c2543;
+
+  --secondary: #f8d57e;
+  --secondary-fore: #ffffff;
+  --secondary-hover: #e7b840;
+
+  --complement: #eceff2;
+  --complement-fore: #ffffff;
+  --complement-hover: #c2c2c2;
+
+  --bg-main: #ffffff;
+  --bg-main-darken: #fafbfd;
+}
+
+.dark {
+  --primary: #cdd3de;
+
+  --secondary: #f8d57e;
+  --secondary-fore: #1d2225;
+  --secondary-hover: #e7b840;
+
+  --complement: #eceff2;
+  --complement-fore: #ffffff;
+  --complement-hover: #c2c2c2;
+
+  --bg-main: #1d2225;
+  --bg-main-darken: #343d43;
+}
