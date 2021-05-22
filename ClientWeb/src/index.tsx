@@ -6,8 +6,7 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { HomePage, LoginPage, RegisterPage } from './pages/pages-index'
 import { MainNav } from './components/molecules/molecules-index'
-import { MainFooter } from './components/atoms/atoms-index'
-import { MainNavItem } from './components/atoms/atoms-index'
+import * as atoms from './components/atoms/atoms-index'
 
 ReactDOM.render(
   <div>
@@ -17,10 +16,12 @@ ReactDOM.render(
           <div className="row">
             <div className="twelve columns">
               <MainNav>
-                <MainNavItem path="/">Home</MainNavItem>
-                <MainNavItem path="/login">Login</MainNavItem>
-                <MainNavItem path="/register">Register</MainNavItem>
+                <atoms.MainNavItem path="/">Home</atoms.MainNavItem>
+                <atoms.MainNavItem path="/login">Login</atoms.MainNavItem>
+                <atoms.MainNavItem path="/register">Register</atoms.MainNavItem>
               </MainNav>
+
+              <atoms.ThemeSwitch />
             </div>
           </div>
 
@@ -42,7 +43,7 @@ ReactDOM.render(
 
           <div className="row">
             <div className="twelve columns">
-              <MainFooter />
+              <atoms.MainFooter />
             </div>
           </div>
         </div>
