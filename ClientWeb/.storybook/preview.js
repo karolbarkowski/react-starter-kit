@@ -10,6 +10,7 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  backgrounds: { disable: true },
 }
 
 export const globalTypes = {
@@ -19,8 +20,18 @@ export const globalTypes = {
     defaultValue: 'light',
     toolbar: {
       icon: 'paintbrush',
-      // Array of plain string values or MenuItem shape (see below)
-      items: ['light', 'dark'],
+      items: [
+        {
+          value: 'light',
+          title: 'Light',
+          icon: 'circlehollow',
+        },
+        {
+          value: 'dark',
+          title: 'Dark',
+          icon: 'circle',
+        },
+      ],
     },
   },
 }
