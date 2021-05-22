@@ -1,5 +1,5 @@
-import './index.scss'
 import './_theme.scss'
+import './index.scss'
 import '@hookstate/devtools'
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -10,7 +10,7 @@ import { MainFooter } from './components/atoms/atoms-index'
 import { MainNavItem } from './components/atoms/atoms-index'
 
 ReactDOM.render(
-  <div className="light">
+  <div>
     <React.StrictMode>
       <Router>
         <div className="container">
