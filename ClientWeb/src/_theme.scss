@@ -2,7 +2,7 @@
   --primary: #2c2543;
 
   --secondary: #f8d57e;
-  --secondary-fore: #ffffff;
+  --secondary-fore: #1d2225;
   --secondary-hover: #e7b840;
 
   --complement: #eceff2;
@@ -11,6 +11,10 @@
 
   --bg-main: #ffffff;
   --bg-main-darken: #fafbfd;
+
+  --input-bg: #ffffff;
+  --iput-border: #d1d1d1;
+  --input-focus: #33c3f0;
 }
 
 .dark {
@@ -26,4 +30,8 @@
 
   --bg-main: #1d2225;
   --bg-main-darken: #343d43;
+
+  --input-bg: #777777;
+  --iput-border: #555555;
+  --input-focus: #33c3f0;
 }

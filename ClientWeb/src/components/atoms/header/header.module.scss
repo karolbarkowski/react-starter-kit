@@ -3,11 +3,11 @@
   margin-bottom: 2rem;
 
   &.primary {
-    color: #2c2543;
+    color: var(--primary);
   }
 
   &.secondary {
-    color: #f8d57e;
+    color: var(--secondary);
   }
 }
 

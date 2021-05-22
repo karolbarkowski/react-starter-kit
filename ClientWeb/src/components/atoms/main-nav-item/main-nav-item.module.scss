@@ -2,12 +2,12 @@
   display: inline-block;
 
   &:hover {
-    background-color: yellow;
+    background-color: var(--secondary);
   }
 
   a {
     display: block;
-    color: green;
+    color: var(--primary);
     text-decoration: none;
     padding: 12px 20px;
   }

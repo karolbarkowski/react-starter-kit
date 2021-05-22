@@ -25,13 +25,13 @@
   select {
     width: 100%;
     padding: 12px 10px;
-    background-color: #fff;
-    border: 1px solid #d1d1d1;
+    background-color: var(--input-bg);
+    border: 1px solid var(--iput-border);
     border-radius: 4px;
     box-sizing: border-box;
 
     &:focus {
-      border: 1px solid #33c3f0;
+      border: 1px solid var(--input-focus);
       outline: 0;
     }
   }
