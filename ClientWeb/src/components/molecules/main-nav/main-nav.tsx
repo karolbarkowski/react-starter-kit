@@ -1,4 +1,4 @@
-import { MainNavItemProps } from '../../atoms/main-nav-item/main-nav-item'
+import { MainNavItemProps } from '../../atoms/atoms-index'
 
 export interface MainNavProps {
   children: React.ReactElement<MainNavItemProps> | React.ReactElement<MainNavItemProps>[]
