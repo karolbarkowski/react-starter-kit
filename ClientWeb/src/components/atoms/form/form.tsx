@@ -39,7 +39,7 @@ export const Form = (props: FormProps) => {
           })
         })}
 
-        <Button type="submit" isSubmitting={isSubmitting} label={submitLabel} className="primary"></Button>
+        <Button isBusy={isSubmitting} label={submitLabel}></Button>
       </form>
     </>
   )

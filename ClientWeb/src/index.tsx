@@ -1,5 +1,9 @@
+import 'primereact/resources/themes/saga-blue/theme.css'
+import 'primereact/resources/primereact.min.css'
+import 'primeicons/primeicons.css'
 import './_theme.scss'
 import './index.scss'
+
 import '@hookstate/devtools'
 import React from 'react'
 import ReactDOM from 'react-dom'

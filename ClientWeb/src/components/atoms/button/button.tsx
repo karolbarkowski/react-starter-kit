@@ -1,15 +1,25 @@
-import styles from './button.module.scss'
+import { Button as PrimeButton } from 'primereact/button'
+import { IconProps, IconClassMap } from './../icon/icon'
+
+const classMap = {
+  primary: '',
+  secondary: 'p-button-secondary',
+}
 
 export type ButtonProps = {
-  label: string
-  isSubmitting?: boolean
-  className?: 'primary' | 'secondary'
-  type?: 'button' | 'submit' | 'reset'
+  label?: string
+  isBusy?: boolean
+  severity?: 'primary' | 'secondary'
   disabled?: boolean
+  icon?: IconProps['name']
 }
 
 export const Button = (props: ButtonProps) => {
-  const { label, isSubmitting = false, className = 'primary', type = 'button', disabled = false } = props
+  const { label, isBusy = false, severity = 'primary', disabled = false, icon } = props
 
-  return <input className={`${styles.btn} ${styles[className]}`} value={label} disabled={disabled || isSubmitting} type={type} />
+  const iconProps = {
+    ...(icon && { icon: IconClassMap[icon] }),
+  }
+
+  return <PrimeButton className={`${classMap[severity]} p-button-rounded p-button-sm`} {...iconProps} loading={isBusy} label={label} disabled={disabled} />
 }

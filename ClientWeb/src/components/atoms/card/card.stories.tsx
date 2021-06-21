@@ -10,12 +10,12 @@ const Template: Story<CardProps> = (args) => {
   return (
     <>
       <Card {...args}>
-        <p>card content</p>
+        <span>card content</span>
       </Card>
       <br />
 
       <Card {...args} dropShadow={true}>
-        <p>card content with shadow</p>
+        <span>card content with shadow</span>
       </Card>
     </>
   )

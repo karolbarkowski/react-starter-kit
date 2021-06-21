@@ -1,3 +1,19 @@
 .sb-show-main.sb-main-padded {
   padding: 0 !important;
 }
+.row > * {
+  margin-right: 0.5rem;
+}
+
+h5 {
+  margin: 1.5rem 0 0.3rem;
+}
+
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child,
+h6:first-child {
+  margin-top: 0;
+}
