@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header } from '../../components/atoms/atoms-index'
+import { Card } from '../../components/atoms/atoms-index'
 import { LoginForm } from '../../components/organisms/organisms-index'
 import { post, urls } from '../../services/api'
 import { NotificationTypes, notify } from '../../services/notification'
@@ -8,7 +8,6 @@ export const LoginPage = () => {
   const [isSubmitting, setIsSubmitting] = React.useState<boolean>(false)
 
   const onSubmit = (values: any) => {
-    console.log('LOGGIN IN')
     setIsSubmitting(true)
     post(
       urls.ACCOUNT.LOGIN,
@@ -26,10 +25,8 @@ export const LoginPage = () => {
   }
 
   return (
-    <>
-      <Header type="medium">Login Page</Header>
-
+    <Card dropShadow={true}>
       <LoginForm onSubmit={onSubmit} isSubmitting={isSubmitting}></LoginForm>
-    </>
+    </Card>
   )
 }

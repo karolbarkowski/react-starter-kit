@@ -1,5 +1,6 @@
 export { AppTextInput } from './input-text/app-text-input'
 export { Button } from './button/button'
+export { Card } from './card/card'
 export { Form } from './form/form'
 export { Header } from './header/header'
 export { MainFooter } from './main-footer/main-footer'

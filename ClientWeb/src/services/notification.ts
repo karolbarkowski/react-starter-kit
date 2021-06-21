@@ -1,17 +1,28 @@
+import 'react-notifications-component/dist/theme.css'
+import { store } from 'react-notifications-component'
+
 enum NotificationTypes {
   Success = 'success',
   Info = 'info',
   Warning = 'warning',
-  Error = 'error',
+  Error = 'danger',
+  Default = 'default',
 }
 
-function notify(message: string, description: string, type?: NotificationTypes, onClick?: () => void): void {
-  // const openMethodRef = type ? notification[type] : notification.open
-  // openMethodRef({
-  //   message,
-  //   description,
-  //   onClick,
-  // })
+function notify(title: string, message: string, type: NotificationTypes = NotificationTypes.Default): void {
+  store.addNotification({
+    title: title,
+    message: message,
+    type: type,
+    insert: 'top',
+    container: 'top-full',
+    animationIn: ['animate__animated', 'animate__fadeIn'],
+    animationOut: ['animate__animated', 'animate__fadeOut'],
+    dismiss: {
+      duration: 3000,
+      onScreen: false,
+    },
+  })
 }
 
 export { notify, NotificationTypes }

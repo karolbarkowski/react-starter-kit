@@ -1,0 +1,21 @@
+.card {
+  padding: 18px 30px;
+  border-radius: 14px;
+  color: var(--primary);
+
+  &.shadow {
+    box-shadow: 0px 0px 30px 5px rgba(0, 0, 0, 0.46);
+  }
+
+  &.light {
+    background-color: var(--bg-main);
+  }
+
+  &.darkened {
+    background-color: var(--bg-main-darken);
+  }
+
+  &.accent {
+    background-color: var(--secondary);
+  }
+}
