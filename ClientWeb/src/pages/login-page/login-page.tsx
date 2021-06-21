@@ -1,6 +1,7 @@
 import React from 'react'
 import { Card } from '../../components/atoms/atoms-index'
 import { LoginForm } from '../../components/organisms/organisms-index'
+import { CenteredFormTemplate } from '../../components/templates/templates-index'
 import { post, urls } from '../../services/api'
 import { NotificationTypes, notify } from '../../services/notification'
 
@@ -25,12 +26,10 @@ export const LoginPage = () => {
   }
 
   return (
-    <div className="p-grid p-justify-center">
-      <div className="p-col-12 p-md-8 p-lg-6">
-        <Card dropShadow={true}>
-          <LoginForm onSubmit={onSubmit} isSubmitting={isSubmitting}></LoginForm>
-        </Card>
-      </div>
-    </div>
+    <CenteredFormTemplate>
+      <Card dropShadow={true}>
+        <LoginForm onSubmit={onSubmit} isSubmitting={isSubmitting}></LoginForm>
+      </Card>
+    </CenteredFormTemplate>
   )
 }

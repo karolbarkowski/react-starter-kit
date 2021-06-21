@@ -1,8 +1,8 @@
-import { DefaultTemplate } from './default-template'
+import { RootTemplate } from './root-template'
 
 export default {
   title: 'Templates/Default Layout',
-  component: DefaultTemplate,
+  component: RootTemplate,
 }
 
 const HeaderPlaceholder = () => <img alt="" src="https://via.placeholder.com/1200x150/cccccc/FFFFFF?text=Header" />
@@ -10,7 +10,7 @@ const ContentPlaceholder = () => <img alt="" src="https://via.placeholder.com/12
 const FooterPlaceholder = () => <img alt="" src="https://via.placeholder.com/1200x150/cccccc/FFFFFF?text=Footer" />
 
 export const DefaultLayout = () => (
-  <DefaultTemplate header={<HeaderPlaceholder></HeaderPlaceholder>} footer={<FooterPlaceholder></FooterPlaceholder>}>
+  <RootTemplate header={<HeaderPlaceholder></HeaderPlaceholder>} footer={<FooterPlaceholder></FooterPlaceholder>}>
     <ContentPlaceholder />
-  </DefaultTemplate>
+  </RootTemplate>
 )

@@ -3,6 +3,7 @@ import '!style-loader!css-loader!sass-loader!./../src/index.scss'
 import 'primereact/resources/themes/saga-blue/theme.css'
 import 'primereact/resources/primereact.min.css'
 import 'primeicons/primeicons.css'
+import 'primeflex/primeflex.css'
 import './style-overrides.css'
 
 export const parameters = {

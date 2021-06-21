@@ -1,12 +1,12 @@
 import { ReactElement } from 'react'
 
-export interface DefaultTemplateProps {
+export interface RootTemplateProps {
   header: ReactElement
   children: React.ReactElement
   footer: ReactElement
 }
 
-export const DefaultTemplate = (props: DefaultTemplateProps) => {
+export const RootTemplate = (props: RootTemplateProps) => {
   return (
     <div className="p-grid">
       <div className="p-col-12">{props.header}</div>
