@@ -25,8 +25,12 @@ export const LoginPage = () => {
   }
 
   return (
-    <Card dropShadow={true}>
-      <LoginForm onSubmit={onSubmit} isSubmitting={isSubmitting}></LoginForm>
-    </Card>
+    <div className="p-grid p-justify-center">
+      <div className="p-col-12 p-md-8 p-lg-6">
+        <Card dropShadow={true}>
+          <LoginForm onSubmit={onSubmit} isSubmitting={isSubmitting}></LoginForm>
+        </Card>
+      </div>
+    </div>
   )
 }

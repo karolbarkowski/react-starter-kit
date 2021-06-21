@@ -8,10 +8,10 @@ export interface DefaultTemplateProps {
 
 export const DefaultTemplate = (props: DefaultTemplateProps) => {
   return (
-    <>
-      {props.header}
-      {props.children}
-      {props.footer}
-    </>
+    <div className="p-grid">
+      <div className="p-col-12">{props.header}</div>
+      <div className="p-col-12">{props.children}</div>
+      <div className="p-col-12">{props.footer}</div>
+    </div>
   )
 }

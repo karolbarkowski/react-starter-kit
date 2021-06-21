@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header } from '../../components/atoms/atoms-index'
+import { Card } from '../../components/atoms/atoms-index'
 import { RegisterForm } from '../../components/organisms/organisms-index'
 import { post, urls } from '../../services/api'
 import { NotificationTypes, notify } from '../../services/notification'
@@ -25,10 +25,12 @@ export const RegisterPage = () => {
   }
 
   return (
-    <>
-      <Header type="medium">Register Page</Header>
-
-      <RegisterForm onSubmit={onSubmit} isSubmitting={isSubmitting}></RegisterForm>
-    </>
+    <div className="p-grid p-justify-center">
+      <div className="p-col-12 p-md-8 p-lg-6">
+        <Card dropShadow={true}>
+          <RegisterForm onSubmit={onSubmit} isSubmitting={isSubmitting}></RegisterForm>
+        </Card>
+      </div>
+    </div>
   )
 }

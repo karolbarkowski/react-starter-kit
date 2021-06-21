@@ -5,10 +5,21 @@
 
 body,
 .storybook {
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 1.6;
   font-weight: 400;
   font-family: 'Raleway', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   background-color: var(--bg-main);
   color: var(--primary);
+}
+
+#root {
+  max-width: 1284px;
+  margin: auto;
+}
+
+@media only screen and (max-width: 1284px) {
+  #root {
+    padding: 2rem;
+  }
 }

@@ -1,6 +1,7 @@
 import 'primereact/resources/themes/saga-blue/theme.css'
 import 'primereact/resources/primereact.min.css'
 import 'primeicons/primeicons.css'
+import 'primeflex/primeflex.css'
 import './_theme.scss'
 import './index.scss'
 
