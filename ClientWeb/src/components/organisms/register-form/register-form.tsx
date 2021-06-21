@@ -10,9 +10,9 @@ const validationSchema = Yup.object().shape({
 })
 
 const defaultValues = {
-  email: 'test001@example.com',
-  password: 'Mkb1983!!',
-  passwordRepeat: 'Mkb1983!!!',
+  email: '',
+  password: '',
+  passwordRepeat: '',
 }
 
 export interface RegisterFormProps {
@@ -22,7 +22,7 @@ export interface RegisterFormProps {
 
 export const RegisterForm = (props: RegisterFormProps) => {
   return (
-    <Form submitLabel="Register" isSubmitting={props.isSubmitting} onSubmit={props.onSubmit} validationSchema={validationSchema} defaultValues={defaultValues}>
+    <Form title="Register" submitLabel="Register" isSubmitting={props.isSubmitting} onSubmit={props.onSubmit} validationSchema={validationSchema} defaultValues={defaultValues}>
       <AppTextInput label="Email" name="email" />
       <AppTextInput label="Password" name="password" type="password" />
       <AppTextInput label="Repeat Password" name="passwordRepeat" type="password" />

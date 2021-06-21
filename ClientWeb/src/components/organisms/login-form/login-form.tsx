@@ -7,8 +7,8 @@ const validationSchema = Yup.object().shape({
 })
 
 const defaultValues = {
-  email: 'test001@example.com',
-  password: 'Mkb1983!!',
+  email: '',
+  password: '',
 }
 
 export interface LoginFormProps {
@@ -18,7 +18,7 @@ export interface LoginFormProps {
 
 export const LoginForm = (props: LoginFormProps) => {
   return (
-    <Form submitLabel="Login" isSubmitting={props.isSubmitting} onSubmit={props.onSubmit} validationSchema={validationSchema} defaultValues={defaultValues}>
+    <Form title="Login" submitLabel="Login" isSubmitting={props.isSubmitting} onSubmit={props.onSubmit} validationSchema={validationSchema} defaultValues={defaultValues}>
       <AppTextInput label="Email" name="email" />
       <AppTextInput label="Password" name="password" type="password" />
     </Form>

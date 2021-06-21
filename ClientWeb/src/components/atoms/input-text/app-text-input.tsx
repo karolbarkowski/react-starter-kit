@@ -1,5 +1,6 @@
-import styles from './app-text-input.module.scss'
-import { FieldValues, UseFormRegister } from 'react-hook-form'
+import { Controller } from 'react-hook-form'
+import { InputText } from 'primereact/inputtext'
+import { classNames } from 'primereact/utils'
 
 export interface InputProps {
   label: string
@@ -7,23 +8,27 @@ export interface InputProps {
   type?: 'text' | 'password' | 'email' | 'number' | 'checkbox'
   disabled?: boolean
   error?: string
-  register?: UseFormRegister<FieldValues>
+  control?: any
 }
 
 export function AppTextInput(props: InputProps) {
-  const { register, name, label, type = 'text', error, disabled = false } = props
-  const inputProps = { name, type, disabled, className: 'input' }
+  const { control, name, label, type = 'text', error, disabled = false } = props
 
   return (
-    <div className={styles['form-line']}>
-      <label className={styles['label']} htmlFor={name}>
-        {label}
-      </label>
+    <div className="p-field">
+      <span className="p-float-label">
+        <Controller
+          name={name}
+          control={control}
+          render={({ field, fieldState }) => {
+            return <InputText type={type} disabled={disabled} id={field.name} {...field} className={classNames({ 'p-invalid': fieldState.invalid })} />
+          }}
+        />
 
-      {register && <input {...register(name)} {...inputProps} />}
-      {!register && <input {...inputProps} />}
+        <label htmlFor={name}>{label}</label>
+      </span>
 
-      {error && <p className={styles['error']}>{error}</p>}
+      {error && <small className="p-error">{error}</small>}
     </div>
   )
 }

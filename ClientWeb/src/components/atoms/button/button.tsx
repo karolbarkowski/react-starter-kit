@@ -10,16 +10,17 @@ export type ButtonProps = {
   label?: string
   isBusy?: boolean
   severity?: 'primary' | 'secondary'
+  type?: 'submit' | 'reset' | 'button'
   disabled?: boolean
   icon?: IconProps['name']
 }
 
 export const Button = (props: ButtonProps) => {
-  const { label, isBusy = false, severity = 'primary', disabled = false, icon } = props
+  const { label, isBusy = false, severity = 'primary', type, disabled = false, icon } = props
 
   const iconProps = {
     ...(icon && { icon: IconClassMap[icon] }),
   }
 
-  return <PrimeButton className={`${classMap[severity]} p-button-rounded p-button-sm`} {...iconProps} loading={isBusy} label={label} disabled={disabled} />
+  return <PrimeButton type={type} className={`${classMap[severity]} p-button-rounded p-button-sm`} {...iconProps} loading={isBusy} label={label} disabled={disabled} />
 }

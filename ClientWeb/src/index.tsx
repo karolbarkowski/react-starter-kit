@@ -27,8 +27,8 @@ const defaultLayoutFooter = <atoms.MainFooter></atoms.MainFooter>
 
 ReactDOM.render(
   <React.StrictMode>
+    <ReactNotification />
     <Router>
-      <ReactNotification />
       <RootTemplate header={defaultLayoutHeader} footer={defaultLayoutFooter}>
         <Switch>
           <Route path="/login" component={LoginPage} />

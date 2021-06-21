@@ -1,10 +1,10 @@
-import styles from './form.module.scss'
 import React from 'react'
 import { useForm, SubmitHandler, FieldValues } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { Button } from '../button/button'
 
 interface FormProps {
+  title?: string
   submitLabel: string
   defaultValues?: FieldValues
   validationSchema?: any
@@ -14,11 +14,11 @@ interface FormProps {
 }
 
 export const Form = (props: FormProps) => {
-  const { submitLabel = 'Submit', defaultValues, validationSchema, children, onSubmit, isSubmitting } = props
+  const { title, submitLabel = 'Submit', defaultValues, validationSchema, children, onSubmit, isSubmitting } = props
 
   const {
     handleSubmit,
-    register,
+    control,
     formState: { errors },
   } = useForm({
     defaultValues,
@@ -27,20 +27,24 @@ export const Form = (props: FormProps) => {
   })
 
   return (
-    <>
-      <form className={styles.form} method="post" onSubmit={handleSubmit(onSubmit)}>
+    <div>
+      {title && <h5 className="p-text-center">{title}</h5>}
+
+      <form onSubmit={handleSubmit(onSubmit)} className="p-fluid">
         {React.Children.map(children, (child) => {
           return React.createElement(child.type, {
             ...{
               ...child.props,
-              register,
+              control,
               error: errors[child.props.name]?.message,
             },
           })
         })}
 
-        <Button isBusy={isSubmitting} label={submitLabel}></Button>
+        <div className="p-mt-2">
+          <Button type="submit" isBusy={isSubmitting} label={submitLabel}></Button>
+        </div>
       </form>
-    </>
+    </div>
   )
 }
