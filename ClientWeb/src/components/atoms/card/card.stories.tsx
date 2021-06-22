@@ -2,36 +2,47 @@ import { Card, CardProps } from './card'
 import { Story } from '@storybook/react'
 
 export default {
-  title: 'Atoms/Card',
+  title: 'Atoms',
   component: Card,
 }
 
 const Template: Story<CardProps> = (args) => {
   return (
     <>
-      <Card {...args}>
-        <span>card content</span>
-      </Card>
-      <br />
+      <h1 className="header">Light</h1>
+      <div className="row">
+        <Card {...args} className="light">
+          <span>card content</span>
+        </Card>
 
-      <Card {...args} dropShadow={true}>
-        <span>card content with shadow</span>
-      </Card>
+        <Card {...args} className="light" dropShadow={true}>
+          <span>card content with shadow</span>
+        </Card>
+      </div>
+
+      <h1 className="header">Darkened</h1>
+      <div className="row">
+        <Card {...args} className="darkened">
+          <span>card content</span>
+        </Card>
+
+        <Card {...args} className="darkened" dropShadow={true}>
+          <span>card content with shadow</span>
+        </Card>
+      </div>
+
+      <h1 className="header">Accent</h1>
+      <div className="row">
+        <Card {...args} className="accent">
+          <span>card content</span>
+        </Card>
+
+        <Card {...args} className="accent" dropShadow={true}>
+          <span>card content with shadow</span>
+        </Card>
+      </div>
     </>
   )
 }
 
-export const Light = Template.bind({})
-Light.args = {
-  className: 'light',
-}
-
-export const Darkened = Template.bind({})
-Darkened.args = {
-  className: 'darkened',
-}
-
-export const Accent = Template.bind({})
-Accent.args = {
-  className: 'accent',
-}
+export const Cards = Template.bind({})

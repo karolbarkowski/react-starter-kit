@@ -2,17 +2,20 @@ import { Icon, IconProps } from './icon'
 import { Story } from '@storybook/react'
 
 export default {
-  title: 'Atoms/Icon',
+  title: 'Atoms',
   component: Icon,
 }
 
 const Template: Story<IconProps> = (args) => {
   return (
-    <div className="row">
-      <Icon name="user" />
-      <Icon name="facebook" />
-      <Icon name="google" />
-    </div>
+    <>
+      <h1 className="header">Icons</h1>
+      <div className="row">
+        <Icon name="user" />
+        <Icon name="facebook" />
+        <Icon name="google" />
+      </div>
+    </>
   )
 }
 

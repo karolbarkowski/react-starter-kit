@@ -1,5 +1,5 @@
 import { Controller } from 'react-hook-form'
-import { InputText } from 'primereact/inputtext'
+import { InputText as PrimeReactInputText } from 'primereact/inputtext'
 import { classNames } from 'primereact/utils'
 
 export interface InputProps {
@@ -11,7 +11,7 @@ export interface InputProps {
   control?: any
 }
 
-export function AppTextInput(props: InputProps) {
+export function InputText(props: InputProps) {
   const { control, name, label, type = 'text', error, disabled = false } = props
 
   return (
@@ -21,7 +21,7 @@ export function AppTextInput(props: InputProps) {
           name={name}
           control={control}
           render={({ field, fieldState }) => {
-            return <InputText type={type} disabled={disabled} id={field.name} {...field} className={classNames({ 'p-invalid': fieldState.invalid })} />
+            return <PrimeReactInputText type={type} disabled={disabled} id={field.name} {...field} className={classNames({ 'p-invalid': fieldState.invalid })} />
           }}
         />
 

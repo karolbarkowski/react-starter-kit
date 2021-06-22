@@ -5,15 +5,13 @@
   margin-right: 0.5rem;
 }
 
-h5 {
-  margin: 1.5rem 0 0.3rem;
+h1.header {
+  font-size: 14px;
+  margin: 3rem 0 0.3rem 0;
+  display: block;
+  border-bottom: 1px solid black;
 }
 
-h1:first-child,
-h2:first-child,
-h3:first-child,
-h4:first-child,
-h5:first-child,
-h6:first-child {
+h1.header:first-child {
   margin-top: 0;
 }

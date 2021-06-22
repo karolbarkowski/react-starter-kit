@@ -1,11 +1,11 @@
-import { ThemeSwitch } from './theme-switch'
+import { ThemeSwitch as ThemeSwitchControl } from './theme-switch'
 import { Story } from '@storybook/react'
 
 export default {
-  title: 'Atoms/Theme Switch',
-  component: ThemeSwitch,
+  title: 'Atoms',
+  component: ThemeSwitchControl,
 }
 
-const Template: Story = (args) => <ThemeSwitch {...args} />
+const Template: Story = (args) => <ThemeSwitchControl {...args} />
 
-export const Switch = Template.bind({})
+export const ThemeSwitch = Template.bind({})

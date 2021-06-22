@@ -6,26 +6,23 @@ export default {
   component: Header,
 }
 
-const Template: Story<HeaderProps> = (args) => {
+const Template: Story<HeaderProps> = () => {
   return (
     <>
-      <Header type="big" {...args}>
-        Lorem ipsum dolor sit amet
-      </Header>
-      <Header type="medium" {...args}>
-        Lorem ipsum dolor sit amet
-      </Header>
-      <Header type="small" {...args}>
-        Lorem ipsum dolor sit amet
-      </Header>
+      <h1 className="header">Sizes</h1>
+      <div className="row">
+        <Header type="big">Lorem ipsum dolor sit amet</Header>
+        <Header type="medium">Lorem ipsum dolor sit amet</Header>
+        <Header type="small">Lorem ipsum dolor sit amet</Header>
+      </div>
+
+      <h1 className="header">Colors</h1>
+      <div className="row">
+        <Header color="primary">Primary Header</Header>
+        <Header color="secondary">Secondary Header</Header>
+      </div>
     </>
   )
 }
 
-export const Primary = Template.bind({})
-Primary.args = {}
-
-export const Secondary = Template.bind({})
-Secondary.args = {
-  color: 'secondary',
-}
+export const Headers = Template.bind({})

@@ -1,4 +1,4 @@
-import { Form, AppTextInput } from '../../atoms/atoms-index'
+import { Form, InputText } from '../../atoms/atoms-index'
 import * as Yup from 'yup'
 
 const validationSchema = Yup.object().shape({
@@ -19,8 +19,8 @@ export interface LoginFormProps {
 export const LoginForm = (props: LoginFormProps) => {
   return (
     <Form title="Login" submitLabel="Login" isSubmitting={props.isSubmitting} onSubmit={props.onSubmit} validationSchema={validationSchema} defaultValues={defaultValues}>
-      <AppTextInput label="Email" name="email" />
-      <AppTextInput label="Password" name="password" type="password" />
+      <InputText label="Email" name="email" />
+      <InputText label="Password" name="password" type="password" />
     </Form>
   )
 }

@@ -2,7 +2,7 @@ import { RegisterForm } from './register-form'
 import { Story } from '@storybook/react'
 
 export default {
-  title: 'Organisms/Register Form',
+  title: 'Organisms/Register ',
   component: RegisterForm,
 }
 

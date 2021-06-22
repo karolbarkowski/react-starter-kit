@@ -1,8 +1,8 @@
 import { MainFooter } from '../main-footer/main-footer'
 
 export default {
-  title: 'Atoms/Main Footer',
+  title: 'Atoms',
   component: MainFooter,
 }
 
-export const Footer = () => <MainFooter />
+export const RootFooter = () => <MainFooter />

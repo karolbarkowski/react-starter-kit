@@ -1,9 +1,10 @@
+import { Story } from '@storybook/react'
 import { MemoryRouter } from 'react-router-dom'
 import { MainNavItem } from '../../atoms/atoms-index'
-import { MainNav } from './main-nav'
+import { MainNav, MainNavProps } from './main-nav'
 
 export default {
-  title: 'Molecules/Main Nav',
+  title: 'Molecules/MainNav',
   component: MainNav,
   decorators: [
     (Story: any) => (
@@ -14,7 +15,7 @@ export default {
   ],
 }
 
-export const NavItem = () => {
+const Template: Story<MainNavProps> = () => {
   return (
     <MainNav>
       <MainNavItem path="#">Menu Item 1</MainNavItem>
@@ -23,3 +24,5 @@ export const NavItem = () => {
     </MainNav>
   )
 }
+
+export const MainNavigation = Template.bind({})
