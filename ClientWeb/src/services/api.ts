@@ -1,5 +1,8 @@
 import axios from 'axios'
 axios.defaults.baseURL = process.env.REACT_APP_BACKEND_API_URL
+axios.defaults.withCredentials = true
+axios.defaults.headers.post['Content-Type'] = 'application/json'
+axios.defaults.headers.post['Accept'] = 'application/json'
 
 const get = (url: string, queryParams: any, onSuccess: any, onError: any, onFinally: any) => {
   axios.get(url, { params: queryParams }).then(onSuccess).catch(onError).then(onFinally)

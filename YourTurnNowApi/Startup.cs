@@ -14,13 +14,14 @@ using Model;
 using Model.Identity;
 using System;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace YourTurnNowApi
 {
     public class Startup
     {
         private const string SecretKey = "iNivDmHLpUA223sqsfhqGbMRdRj1PVkH"; // todo: get this from somewhere secure
-        private readonly SymmetricSecurityKey _signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(SecretKey));
+        private readonly SymmetricSecurityKey _signingKey = new(Encoding.ASCII.GetBytes(SecretKey));
 
         public Startup(IConfiguration configuration)
         {
@@ -34,9 +35,10 @@ namespace YourTurnNowApi
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowOrigin", builder => builder
-                .AllowAnyOrigin()
-                   .AllowAnyMethod()
-                   .AllowAnyHeader());
+                    .AllowCredentials()
+                    .WithOrigins(new string[] { "http://localhost:3000" })
+                    .WithMethods(new string[] { "OPTIONS", "GET", "POST" })
+                    .AllowAnyHeader());
             });
 
             //controllers
@@ -80,6 +82,7 @@ namespace YourTurnNowApi
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 
             }).AddJwtBearer(configureOptions =>
@@ -87,13 +90,21 @@ namespace YourTurnNowApi
                 configureOptions.ClaimsIssuer = jwtAppSettingOptions[nameof(JwtIssuerOptions.Issuer)];
                 configureOptions.TokenValidationParameters = tokenValidationParameters;
                 configureOptions.SaveToken = true;
+                configureOptions.Events = new JwtBearerEvents
+                {
+                    OnMessageReceived = context =>
+                    {
+                        context.Token = context.Request.Cookies["jwt"];
+                        return Task.CompletedTask;
+                    }
+                };
             });
 
             // api user claim policy
             services.AddAuthorization(options =>
             {
                 options.AddPolicy(
-                    "ApiUser", 
+                    "ApiUser",
                     policy => policy.RequireClaim(Constants.Strings.JwtClaimIdentifiers.Rol, Constants.Strings.JwtClaims.ApiAccess));
             });
 

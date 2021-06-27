@@ -28,7 +28,7 @@ namespace YourTurnNowApi.Api.Account
             //if (!result.Succeeded)
             //    return new BadRequestResult();
 
-            return new OkResult();
+            return await Task.FromResult(new OkResult());
         }
     }
 }

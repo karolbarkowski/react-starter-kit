@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 using Model.Identity;
-using Newtonsoft.Json;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using YourTurnNowApi.Api.Account.Model;
@@ -15,13 +13,11 @@ namespace YourTurnNowApi.Api.Account
     {
         private readonly UserManager<IdentityUser> userManager;
         private readonly IJwtFactory jwtFactory;
-        private readonly JwtIssuerOptions jwtOptions;
 
-        public LoginController(UserManager<IdentityUser> userManager, IJwtFactory jwtFactory, IOptions<JwtIssuerOptions> jwtOptions)
+        public LoginController(UserManager<IdentityUser> userManager, IJwtFactory jwtFactory)
         {
             this.userManager = userManager;
             this.jwtFactory = jwtFactory;
-            this.jwtOptions = jwtOptions.Value;
         }
 
         [HttpPost("login")]
@@ -33,8 +29,22 @@ namespace YourTurnNowApi.Api.Account
                 return BadRequest();
             }
 
-            var jwt = await Tokens.GenerateJwt(identity, jwtFactory, credentials.Email, jwtOptions, new JsonSerializerSettings { Formatting = Formatting.Indented });
-            return new OkObjectResult(jwt);
+            var jwt = await jwtFactory.GenerateEncodedToken(credentials.Email, identity);
+            Response.Cookies.Append("jwt", jwt, new Microsoft.AspNetCore.Http.CookieOptions
+            {
+                HttpOnly = true,
+                SameSite = Microsoft.AspNetCore.Http.SameSiteMode.None,
+                Secure = true
+            });
+
+            return new OkObjectResult("Validation succesfull");
+        }
+
+        [HttpPost("logout")]
+        public IActionResult Logout()
+        {
+            Response.Cookies.Delete("jwt");
+            return new OkObjectResult("Logged out succesfully");
         }
 
         private async Task<ClaimsIdentity> GetClaimsIdentity(string userName, string password)

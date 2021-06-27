@@ -7,8 +7,8 @@ const validationSchema = Yup.object().shape({
 })
 
 const defaultValues = {
-  email: '',
-  password: '',
+  email: 'test001@example.com',
+  password: 'Mkb1983!!',
 }
 
 export interface LoginFormProps {

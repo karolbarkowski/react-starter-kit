@@ -1,4 +1,5 @@
 import { ReactElement } from 'react'
+import styles from './root-template.module.scss'
 
 export interface RootTemplateProps {
   header: ReactElement
@@ -8,10 +9,10 @@ export interface RootTemplateProps {
 
 export const RootTemplate = (props: RootTemplateProps) => {
   return (
-    <div className="p-grid">
-      <div className="p-col-12">{props.header}</div>
-      <div className="p-col-12">{props.children}</div>
-      <div className="p-col-12">{props.footer}</div>
+    <div className={styles['root-container']}>
+      <div className={styles.header}>{props.header}</div>
+      <div className={styles.content}>{props.children}</div>
+      <div className={styles.footer}>{props.footer}</div>
     </div>
   )
 }

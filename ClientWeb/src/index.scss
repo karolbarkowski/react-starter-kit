@@ -14,14 +14,3 @@ body,
   background-color: var(--bg-main);
   color: var(--primary);
 }
-
-#root {
-  max-width: 1284px;
-  margin: auto;
-}
-
-@media only screen and (max-width: 1284px) {
-  #root {
-    padding: 2rem;
-  }
-}

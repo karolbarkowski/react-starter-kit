@@ -13,10 +13,12 @@ export const LoginPage = () => {
     post(
       urls.ACCOUNT.LOGIN,
       values,
-      () => {
+      (res: any) => {
+        console.log(res)
         notify('Login Succesfull', 'You are now logged in', NotificationTypes.Success)
       },
-      () => {
+      (err: any) => {
+        console.log(err)
         notify('Login Error', 'Unable to log in', NotificationTypes.Error)
       },
       () => {
