@@ -1,0 +1,26 @@
+.sb-show-main.sb-main-padded {
+  padding: 0 !important;
+}
+
+.row {
+  margin-bottom: 1rem;
+}
+
+.row > * {
+  margin-right: 0.5rem;
+}
+
+.row > h1.header {
+  font-size: 14px;
+  margin: 3rem 0 0.6rem 0;
+  display: block;
+  border-bottom: 1px solid black;
+}
+
+.row > h1.header:first-child {
+  margin-top: 0;
+}
+
+svg {
+  display: inline-block !important;
+}
