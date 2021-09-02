@@ -19,16 +19,18 @@ namespace Api.Api.Account.Register
         [HttpPost]
         public async Task<IResult<RegisterResponse>> Post([FromBody] RegisterRequest model)
         {
-            //var result = await UserManager.CreateAsync(new IdentityUser
-            //{
-            //    Email = model.Email,
-            //    UserName = model.Email
-            //}, model.Password);
+            var result = await UserManager.CreateAsync(new IdentityUser
+            {
+                Email = model.Email,
+                UserName = model.Email
+            }, model.Password);
 
-            //if (!result.Succeeded)
-            //    return new BadRequestResult();
+            if (!result.Succeeded)
+            {
+                return new FailedResult<RegisterResponse>("REGISTER");
+            }
 
-            return await Task.FromResult(new SuccessfulResult<RegisterResponse>(new RegisterResponse()));
+            return new SuccessfulResult<RegisterResponse>(new RegisterResponse());
         }
     }
 }
