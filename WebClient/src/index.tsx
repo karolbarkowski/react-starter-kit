@@ -27,7 +27,7 @@ const defaultLayoutFooter = (
 )
 
 ReactDOM.render(
-  <div className="">
+  <>
     <ReactNotification />
 
     <Router>
@@ -39,6 +39,6 @@ ReactDOM.render(
         </Switch>
       </RootTemplate>
     </Router>
-  </div>,
+  </>,
   document.getElementById('root')
 )

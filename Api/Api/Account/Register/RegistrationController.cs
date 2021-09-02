@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Api.Results;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using YourTurnNowApi.Api.Account.Model;
 
-namespace YourTurnNowApi.Api.Account
+namespace Api.Api.Account.Register
 {
     [Route("api/account/registration")]
     [ApiController]
@@ -17,7 +17,7 @@ namespace YourTurnNowApi.Api.Account
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] RegistrationViewModel model)
+        public async Task<IResult<RegisterResponse>> Post([FromBody] RegisterRequest model)
         {
             //var result = await UserManager.CreateAsync(new IdentityUser
             //{
@@ -28,7 +28,7 @@ namespace YourTurnNowApi.Api.Account
             //if (!result.Succeeded)
             //    return new BadRequestResult();
 
-            return await Task.FromResult(new OkResult());
+            return await Task.FromResult(new SuccessfulResult<RegisterResponse>(new RegisterResponse()));
         }
     }
 }

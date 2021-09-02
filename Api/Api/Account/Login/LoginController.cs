@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Api.Results;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Model.Identity;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using YourTurnNowApi.Api.Account.Model;
 
-namespace YourTurnNowApi.Api.Account
+namespace Api.Api.Account.Login
 {
     [Route("api/account")]
     [ApiController]
@@ -21,12 +21,12 @@ namespace YourTurnNowApi.Api.Account
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Post([FromBody] CredentialsViewModel credentials)
+        public async Task<IResult<LoginResponse>> Post([FromBody] LoginRequest credentials)
         {
             var identity = await GetClaimsIdentity(credentials.Email, credentials.Password);
             if (identity == null)
             {
-                return BadRequest();
+                return new FailedResult<LoginResponse>("AUTH");
             }
 
             var jwt = await jwtFactory.GenerateEncodedToken(credentials.Email, identity);
@@ -37,7 +37,11 @@ namespace YourTurnNowApi.Api.Account
                 Secure = true
             });
 
-            return new OkObjectResult("Validation succesfull");
+            return new SuccessfulResult<LoginResponse>(new LoginResponse
+            {
+                Email = credentials.Email,
+                Name = "Jon Doe"
+            });
         }
 
         [HttpPost("logout")]

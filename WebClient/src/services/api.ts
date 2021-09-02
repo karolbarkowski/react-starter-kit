@@ -1,22 +1,47 @@
-import axios from 'axios'
-axios.defaults.baseURL = process.env.REACT_APP_BACKEND_API_URL
-axios.defaults.withCredentials = true
-axios.defaults.headers.post['Content-Type'] = 'application/json'
-axios.defaults.headers.post['Accept'] = 'application/json'
+import { ApiResult, ApiResultError } from './types/api-result'
 
-const get = (url: string, queryParams: any): Promise<any> => {
-  return axios.get(url, { params: queryParams })
+const apiHostUrl = process.env.REACT_APP_BACKEND_API_URL
+const defaultParams: RequestInit = {
+  // credentials: 'include',
+  headers: new Headers({
+    accept: 'application/json',
+    'content-type': 'application/json',
+  }),
 }
 
-const post = async (url: string, body: any): Promise<any> => {
-  return axios.post(url, body)
+const objectToQueryString = (obj: any) => {
+  const params = Object.keys(obj)
+    .map((key) => key + '=' + obj[key])
+    .join('&')
+
+  return params ? '?' + params : ''
 }
 
-const urls = {
-  ACCOUNT: {
-    LOGIN: '/api/account/login',
-    REGISTER: '/api/account/registration',
-  },
+const get = async <T>(url: string, queryParams: any = {}): Promise<ApiResult<T>> => {
+  try {
+    const paramsString = objectToQueryString(queryParams)
+    const params = Object.assign({}, defaultParams, { method: 'GET' })
+
+    const response = await fetch(`${apiHostUrl}/${url}?${paramsString}`, params)
+
+    const operationResult = (await response.json()) as ApiResult<T>
+    return operationResult
+  } catch (error) {
+    return new ApiResultError<T>('FETCH')
+  }
 }
 
-export { get, post, urls }
+const post = async <T>(url: string, body: any): Promise<ApiResult<T>> => {
+  try {
+    const params = Object.assign({}, defaultParams, { method: 'POST', body: JSON.stringify(body) })
+
+    const response: Response = await fetch(`${apiHostUrl}/${url}`, params)
+
+    const operationResult = (await response.json()) as ApiResult<T>
+    return operationResult
+  } catch (error) {
+    return new ApiResultError<T>('FETCH')
+  }
+}
+
+export { get, post }

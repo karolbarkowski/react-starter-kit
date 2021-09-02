@@ -1,18 +1,24 @@
 import React from 'react'
 import { RegisterForm } from '../../components/organisms/organisms-index'
 import { CenteredFormTemplate } from '../../components/templates/templates-index'
-import { post, urls } from '../../services/api'
+import { post } from '../../services/api'
+import { urls } from '../../services/api-urls'
+import { GetMessage } from '../../services/error-messages'
 import { toast } from '../../services/toast'
+import { RegisterRequest, RegisterResponse } from '../../services/types/account/account.types'
 
 export const RegisterPage = () => {
   const [isSubmitting, setIsSubmitting] = React.useState<boolean>(false)
 
-  const onSubmit = async (values: any) => {
+  const onSubmit = async (values: RegisterRequest) => {
     setIsSubmitting(true)
 
-    await post(urls.ACCOUNT.REGISTER, values)
-      .then((e) => toast.success('Registration Successffull', 'You are now redirected to landing page'))
-      .catch((e) => toast.error('Error occured', 'Unknown error occured during registration'))
+    const result = await post<RegisterResponse>(urls.ACCOUNT.REGISTER, values)
+    console.log('REGISTERED')
+
+    if (!result.isSuccess) {
+      toast.error('Error', GetMessage(result.errorCode))
+    }
 
     setIsSubmitting(false)
   }
