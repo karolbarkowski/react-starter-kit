@@ -8,11 +8,12 @@ import { RootTemplate } from './components/templates/templates-index'
 import * as atoms from './components/atoms/atoms-index'
 import { MainNavItem } from './components/atoms/main-nav/main-nav.types'
 import { useAppSelector } from './hooks/redux-hooks'
+import { selectUserName } from './state/slices/account-slice'
 
 const footerLinks = [<Link to="#">First Link</Link>, <Link to="#">Second Link</Link>, <Link to="#">Third Link</Link>]
 
 export const RootComponent = () => {
-  const userName = useAppSelector((state) => state.account.user.name)
+  const userName = useAppSelector(selectUserName)
 
   const header = (
     <atoms.MainNav userName={userName}>

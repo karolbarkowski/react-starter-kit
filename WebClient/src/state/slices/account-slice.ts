@@ -19,8 +19,11 @@ export const accountSlice = createSlice({
   },
 })
 
+//reducer
+export const accountReducer = accountSlice.reducer
+
+//actions
 export const { setUser } = accountSlice.actions
 
+//selectors
 export const selectUserName = (state: RootState) => state.account.user.name
-
-export const accountReducer = accountSlice.reducer
