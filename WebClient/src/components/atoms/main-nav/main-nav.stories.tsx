@@ -16,11 +16,7 @@ export default {
 }
 
 const Template: Story<MainNavProps> = () => {
-  return (
-    <MainNav>
-      {[new MainNavItem('Link 1', '/'), new MainNavItem('Link 2', '/'), new MainNavItem('Link 3', '/')]}
-    </MainNav>
-  )
+  return <MainNav userName={'UserName'}>{[new MainNavItem('Link 1', '/'), new MainNavItem('Link 2', '/'), new MainNavItem('Link 3', '/')]}</MainNav>
 }
 
 export const MainNavigation = Template.bind({})

@@ -1,25 +1,26 @@
 import { useState } from 'react'
-import { LoginForm } from '../../components/organisms/organisms-index'
+import { useAppDispatch } from './../../hooks/redux-hooks'
+import { setUser } from '../../state/slices/account-slice'
+
+import { LoginForm } from '../../components/molecules/molecules-index'
 import { CenteredFormTemplate } from '../../components/templates/templates-index'
-import { LoginResponse } from '../../services/types/account/account.types'
-import { post } from '../../services/api'
-import { urls } from '../../services/api-urls'
-import { toast } from '../../services/toast'
-import { GetMessage } from '../../services/error-messages'
+import { api, toast, errors } from '../../services/services.index'
+import { LoginResponse } from '../../services/api/api-types/account/account.types'
+import { UserState } from '../../state/slices/account-slice.types'
 
 export const LoginPage = () => {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
+  const dispatch = useAppDispatch()
 
   const onSubmit = async (values: LoginResponse) => {
     setIsSubmitting(true)
 
-    const result = await post<LoginResponse>(urls.ACCOUNT.LOGIN, values)
-    console.log(result)
+    const result = await api.post<LoginResponse>(api.urls.ACCOUNT.LOGIN, values)
 
     if (result.isSuccess) {
-      //todo: update state here...
+      dispatch(setUser({ email: result.value?.email, name: result.value?.name } as UserState))
     } else {
-      toast.error('Error', GetMessage(result.errorCode))
+      toast.error('Error', errors.getMessage(result.errorCode))
     }
 
     setIsSubmitting(false)

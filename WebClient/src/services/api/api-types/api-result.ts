@@ -1,11 +1,11 @@
 export class ApiResult<T> {
   isSuccess: boolean
-  data?: T
+  value?: T
   errorCode: string
 
-  constructor(isSuccess: boolean, data?: T, errorCode: string = '') {
+  constructor(isSuccess: boolean, value?: T, errorCode: string = '') {
     this.isSuccess = isSuccess
-    this.data = data
+    this.value = value
     this.errorCode = errorCode
   }
 }

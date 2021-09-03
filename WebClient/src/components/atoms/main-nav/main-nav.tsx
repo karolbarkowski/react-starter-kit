@@ -1,14 +1,17 @@
 import { Link } from 'react-router-dom'
 import { MainNavProps } from './main-nav.types'
+import logo from './../../../assets/images/logo-light.png'
 
 export const MainNav = (props: MainNavProps) => {
   return (
     <nav className="flex items-center justify-between flex-wrap bg-gray-800 p-6 w-full z-10 top-0">
       <div className="flex items-center flex-shrink-0 text-white mr-6">
         <Link className="text-white no-underline hover:text-white hover:no-underline" to="/">
-          <span className="text-2xl pl-2">Brand Name</span>
+          <img src={logo} alt="brand logo" className="block max-h-20" />
         </Link>
       </div>
+
+      {props.userName && <div className="block text-white">Hello, {props.userName}</div>}
 
       <div className="block lg:hidden">
         <button id="nav-toggle" className="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-white hover:border-white">

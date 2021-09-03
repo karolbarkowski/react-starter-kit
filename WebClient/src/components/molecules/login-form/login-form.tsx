@@ -1,52 +1,48 @@
-import { Form, Header, InputText } from '../../atoms/atoms-index'
+import { Form, InputText, Header, ButtonGoogle, Hr } from '../../atoms/atoms-index'
 import * as Yup from 'yup'
+import { LoginFormProps } from './login.form.types'
 import background from './../../../assets/images/bg-abstract.jpg'
-import { RegisterFormProps } from './register-form.types'
-import { HeaderType } from '../../atoms/header/header.types'
+import logo from './../../../assets/images/logo-dark.png'
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Must be a valid email').required('This field is required'),
   password: Yup.string().required('This field is required'),
-  passwordRepeat: Yup.string()
-    .oneOf([Yup.ref('password')], 'Passwords do not match')
-    .required('This field is required'),
 })
 
 const defaultValues = {
-  email: '',
-  password: '',
-  passwordRepeat: '',
+  email: 'test001@example.com',
+  password: 'Mkb1983!!',
 }
 
-export const RegisterForm = (props: RegisterFormProps) => {
+export const LoginForm = (props: LoginFormProps) => {
   return (
     <div className="flex my-8 bg-white rounded-lg shadow-lg overflow-hidden mx-auto min-w-1/2">
       <div className="hidden lg:block lg:w-1/2 bg-cover" style={{ backgroundImage: `url(${background})` }}></div>
 
-      <div className="w-full p-8 lg:w-1/2">
-        <Header type={HeaderType.Medium} className="text-center">
-          Brand Name
-        </Header>
-        <Header type={HeaderType.Small} className="text-center">
-          Please Sign Up
-        </Header>
+      <div className="w-full relative p-8 lg:w-1/2">
+        <img src={logo} alt="brand logo" className="block max-h-24 mb-8 mx-auto" />
+
+        <ButtonGoogle label="Sign in with Google" />
+        <Hr>or login with email</Hr>
 
         <div className="mt-8">
           <Form
-            submitLabel="Sign Up"
+            submitLabel="Login"
             isSubmitting={props.isSubmitting}
             onSubmit={props.onSubmit}
             validationSchema={validationSchema}
             defaultValues={defaultValues}>
             <InputText label="Email Address" name="email" />
             <InputText label="Password" name="password" type="password" />
-            <InputText label="Repeat Password" name="passwordRepeat" type="password" />
           </Form>
         </div>
 
         <div className="mt-8 flex items-center justify-between">
           <a href="/" className="text-xs text-gray-500 uppercase">
-            Already have an account? Login here
+            Sign up with email
+          </a>
+          <a href="/" className="text-xs text-gray-500 uppercase">
+            Forgot Password
           </a>
         </div>
       </div>

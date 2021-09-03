@@ -1,4 +1,4 @@
-import { ApiResult, ApiResultError } from './types/api-result'
+import { ApiResult, ApiResultError } from './api-types/api-result'
 
 const apiHostUrl = process.env.REACT_APP_BACKEND_API_URL
 const defaultParams: RequestInit = {
