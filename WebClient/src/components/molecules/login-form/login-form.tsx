@@ -1,4 +1,4 @@
-import { Form, InputText, Header, ButtonGoogle, Hr } from '../../atoms/atoms-index'
+import { Form, InputText, ButtonGoogle, Hr } from '../../atoms/atoms-index'
 import * as Yup from 'yup'
 import { LoginFormProps } from './login.form.types'
 import background from './../../../assets/images/bg-abstract.jpg'

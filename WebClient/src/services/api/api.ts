@@ -20,7 +20,10 @@ const objectToQueryString = (obj: any) => {
 const get = async <T>(url: string, queryParams: any = {}): Promise<ApiResult<T>> => {
   try {
     const paramsString = objectToQueryString(queryParams)
-    const params = Object.assign({}, defaultParams, { method: 'GET' })
+    const params = {
+      ...defaultParams,
+      method: 'GET',
+    }
 
     const response = await fetch(`${apiHostUrl}/${url}?${paramsString}`, params)
 
@@ -33,7 +36,11 @@ const get = async <T>(url: string, queryParams: any = {}): Promise<ApiResult<T>>
 
 const post = async <T>(url: string, body: any): Promise<ApiResult<T>> => {
   try {
-    const params = Object.assign({}, defaultParams, { method: 'POST', body: JSON.stringify(body) })
+    const params = {
+      ...defaultParams,
+      method: 'POST',
+      body: JSON.stringify(body),
+    }
 
     const response: Response = await fetch(`${apiHostUrl}/${url}`, params)
 

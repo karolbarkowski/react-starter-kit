@@ -12,11 +12,7 @@ const colorClassBuild = (type: CardType): string => {
 export const Card = (props: CardProps) => {
   const { children, dropShadow = false, type = CardType.Light } = props
 
-  const classNames = [
-    colorClassBuild(type),
-    'flex items-center p-4 rounded-md',
-    ...(dropShadow ? ['shadow-md'] : []),
-  ].join(' ')
+  const classNames = [colorClassBuild(type), 'flex items-center p-4 rounded-md', ...(dropShadow ? ['shadow-md'] : [])].join(' ')
 
   return <div className={classNames}>{children}</div>
 }

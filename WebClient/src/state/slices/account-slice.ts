@@ -1,11 +1,11 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '../store.types'
 import { AccountSliceState, UserState } from './account-slice.types'
 
 const initialState: AccountSliceState = {
   user: {
     email: '',
-    name: ' ',
+    name: '',
   },
 }
 
@@ -26,4 +26,7 @@ export const accountReducer = accountSlice.reducer
 export const { setUser } = accountSlice.actions
 
 //selectors
-export const selectUserName = (state: RootState) => state.account.user.name
+export const selectUserName = createSelector(
+  (state: RootState) => state.account.user.name,
+  (name) => name
+)

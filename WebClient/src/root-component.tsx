@@ -3,7 +3,7 @@ import 'react-notifications-component/dist/theme.css'
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
-import { HomePage, LoginPage, RegisterPage } from './pages/pages-index'
+import { HomePage, LoginPage, RegisterPage } from './features/features-index'
 import { RootTemplate } from './components/templates/templates-index'
 import * as atoms from './components/atoms/atoms-index'
 import { MainNavItem } from './components/atoms/main-nav/main-nav.types'

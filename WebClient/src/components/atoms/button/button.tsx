@@ -27,7 +27,7 @@ const hoverStateClassBuild = (severity: Severity): string => {
 export const Button = ({ onClick, label, isBusy = false, severity = Severity.Primary, disabled = false, fullWidth = false, className = '' }: ButtonProps) => {
   const tailwindClasses = [
     regularStateClassBuild(severity),
-    'px-4 py-2 space-x-2 ',
+    'px-4 py-2 space-x-4 transition-width duration-1000',
     'rounded',
     'inline-flex items-center',
     ...(fullWidth ? ['w-full'] : []),
@@ -39,7 +39,7 @@ export const Button = ({ onClick, label, isBusy = false, severity = Severity.Pri
     <button disabled={disabled || isBusy} className={`${tailwindClasses} ${className}`} onClick={onClick}>
       {isBusy && <Svg name={SvgIcons.Spinner} spinning />}
 
-      {label && <span className="text-center w-full font-bold">{label}</span>}
+      {label && <span className="font-bold">{label}</span>}
     </button>
   )
 }

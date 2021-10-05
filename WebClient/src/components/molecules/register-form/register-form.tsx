@@ -1,4 +1,4 @@
-import { Form, Header, InputText } from '../../atoms/atoms-index'
+import { Form, InputText } from '../../atoms/atoms-index'
 import * as Yup from 'yup'
 import background from './../../../assets/images/bg-abstract.jpg'
 import { RegisterFormProps } from './register-form.types'
